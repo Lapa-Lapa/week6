@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePagePf extends AbstractPagePf { //унаследован от AbstractPagePf
+public class HomePagePf extends AbstractPagePf {
 
     @FindBy(xpath = "//*[contains(text(),'Афиша')]")
     WebElement afisha;
 
-    @FindBy(xpath = "//*[contains(text(),'Финансы')]")
-    WebElement finance;
+    @FindBy (xpath ="//*[@class='b-topbar-more-list']/li[4]")
+            WebElement finance;
 
     @FindBy(xpath = "//*[contains(text(),'Разделы')]")
     WebElement section;
@@ -20,7 +20,8 @@ public class HomePagePf extends AbstractPagePf { //унаследован от A
 
 //    @FindBy(xpath = "//input[@value='Go']")
 //    WebElement goButton;
-
+    //(xpath = "//[@title='Финансы']")
+    //*[@id="mainmenu"]/div/div/div/div/ul[2]/li[4]/a
 
     public HomePagePf(WebDriver driver) { //конструктор класса
         super(driver);
@@ -31,18 +32,25 @@ public class HomePagePf extends AbstractPagePf { //унаследован от A
         return this;
     }
 
-    public HomePagePf afishaOpen () {
+    public HomePagePf afishaOpen() {
+        waitForElementVisible(afisha);
         afisha.click();
         return this;
     }
 
-//    public HomePagePf fillSearchInput(String query) { //
-//        searchInput.sendKeys(query);
-//        return this;
-//    }
-//
-//    public FilmsPagePf startSearch() {
-//        goButton.click();
-//        return new FilmsPagePf(driver);
-//    }
+    public HomePagePf financeOpen() throws InterruptedException {
+        waitForElementVisible(section);
+        section.click();
+        //waitForElementVisible(finance);
+        finance.click();
+        return this;
+    }
+
+    public HomePagePf autoOpen() {
+        waitForElementVisible(section);
+        section.click();
+        waitForElementVisible(auto);
+        auto.click();
+        return this;
+    }
 }
