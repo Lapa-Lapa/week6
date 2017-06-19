@@ -17,33 +17,20 @@ public class FinancePagePf extends AbstractPagePf {
     @FindBy(xpath = "//*[@id='bank_list']")
     WebElement bankThatGiveCreditList;
 
-//    @FindBy(xpath = "//*[@id='bank_list']/option[9]") but index 8
-//    WebElement belarusBankFromList;
-
     @FindBy(name = "sum")
     WebElement sumOfCreditField;
 
     @FindBy(name = "submit")
-    //(xpath = "//*[@type='submit']")
-            WebElement submitButton;
+    WebElement submitButton;
 
     @FindBy(xpath = "//*[@id='kred_compare']/table")
     WebElement tableWithResults;
 
     @FindBy(xpath = "//span[contains(text(),'Ставка')]")
-    //(xpath="//*[@id=\"kred_compare\"]/table/tbody/tr[1]/th[3]/a/span")
-
-            //*[@id="slider"]/div/div[1]/div
-            WebElement sortByRateItem;
+    WebElement sortByRateItem;
 
     @FindBy(xpath = "//*[@class='wrapper']/big")
     WebElement thehighestRate;
-
-//    @FindBy(css = "#priceblock_ourprice")
-//    private WebElement itemPrice;
-
-    @FindBy(css = "#priceblock_ourprice")
-    private WebElement itemPrice;
 
     public FinancePagePf(WebDriver driver) {
         super(driver);
@@ -58,7 +45,6 @@ public class FinancePagePf extends AbstractPagePf {
     public FinancePagePf setBelarusBankAsOptionForCredit() throws InterruptedException {
         waitForElementVisible(additionalOptionsForCredit);
         additionalOptionsForCredit.click();
-//        https://www.youtube.com/watch?v=H322v_HRzC8     11.08
         WebElement dropdown = bankThatGiveCreditList;
         Select bank = new Select(dropdown);
         bank.selectByIndex(8);
