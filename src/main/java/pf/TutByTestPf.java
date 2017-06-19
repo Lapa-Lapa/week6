@@ -11,7 +11,6 @@ import pf.pages.FilmsPagePf;
 import pf.pages.FinancePagePf;
 import pf.pages.HomePagePf;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class TutByTestPf {
@@ -21,8 +20,8 @@ public class TutByTestPf {
     private void initBrowser() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(45, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -38,15 +37,9 @@ public class TutByTestPf {
         HomePagePf homePage = new HomePagePf(driver);
         homePage.open().afishaOpen();
         FilmsPagePf filmsPage = new FilmsPagePf(driver).openFilms().moveAvailableDatesToRight().selectDate();
-        Thread.sleep(5000);
-        try {
-            filmsPage.popupWindowClose();
-        } catch (Exception exception) {
-            System.out.println("Tis time pop-up window not appeared");
-        }
-        filmsPage.selectTime();
-//        int i = filmsPage.allShots();
-//        Assert.assertEquals(i, 4, "There are four shots to this film");
+        filmsPage.popupWindowClose().selectTime().selectFilm();
+        int i = filmsPage.allShots();
+        Assert.assertEquals(i, 4, "There are four shots to this film");
     }
 
     @Test(description = "Финансы.tut.by")
@@ -59,26 +52,27 @@ public class TutByTestPf {
     public void financeTutByTest() throws InterruptedException {
         HomePagePf homePage = new HomePagePf(driver);
         homePage.open().financeOpen();
-        FinancePagePf financePage = new FinancePagePf(driver).pressChoseCreditButton()
-                .setBelarusBankAsOptionForCredit().setSumOfCredit().getResults();
+        FinancePagePf financePage = new FinancePagePf(driver);
+        financePage.pressChoseCreditButton().setBelarusBankAsOptionForCredit()
+                .setSumOfCredit().getResults();
     }
 
-//    @Test(description = "Auto.tut.by")
-//    /**    ----Авто.tut.by
-//     1) Активировать версию для смартфонов. (футер)
-//     2) Пройти в секцию авто
-//     3) Рубрика видео
-//     4) Открыть любой пост
-//     5) Активировать плеер
-//     6) Подождать 15 сек.
-//     7) Развернуть плеер на весь экран
-//     8) Проверить, что развернулся на весь экран.*/
-//    public void autoTutByTest() throws InterruptedException {
-//        HomePagePf homePage = new HomePagePf(driver);
-//        homePage.open().autoOpen();
-//        AutoPagePf autoPage = new AutoPagePf(driver).setBelarusBankAsOptionForCredit;
-//
-//    }
+    @Test(description = "Auto.tut.by")
+    /**    ----Авто.tut.by
+     1) Активировать версию для смартфонов. (футер)
+     2) Пройти в секцию авто
+     3) Рубрика видео
+     4) Открыть любой пост
+     5) Активировать плеер
+     6) Подождать 15 сек.
+     7) Развернуть плеер на весь экран
+     8) Проверить, что развернулся на весь экран.*/
+    public void autoTutByTest() throws InterruptedException {
+        HomePagePf homePage = new HomePagePf(driver);
+        homePage.open().mobileVersionEnable().autoOpen();
+        AutoPagePf autoPage = new AutoPagePf(driver).videoSectionOpen()
+                .postOpen().videoPlayButtonPressAndFullSize().assertScalingToFullScreen();
+    }
 
     @AfterClass(description = "close browser")
     public void kill() {

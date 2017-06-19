@@ -1,5 +1,6 @@
 package pf.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,13 +10,29 @@ public class HomePagePf extends AbstractPagePf {
     @FindBy(xpath = "//*[contains(text(),'Афиша')]")
     WebElement afisha;
 
-    @FindBy (xpath ="//*[@class='b-topbar-more-list']/li[4]")
-            WebElement finance;
+    @FindBy(xpath = "//*[@class='b-topbar-more-list']/li[4]")
+    WebElement finance;
 
     @FindBy(xpath = "//*[contains(text(),'Разделы')]")
     WebElement section;
 
-    @FindBy(xpath = "//*[contains(text(),'Авто')]")
+    @FindBy(xpath = "//*[contains(text(),'Версия для смартфонов')]")
+    WebElement mobileVersionEnableLink;
+
+    @FindBy(id = "menu_target")
+    WebElement mobileSection;
+    //.//*[@id='menu_target']
+    //*[@id="menu_target"]/i
+    @FindBy(xpath = "//*[@id='responsive_menu']/li[6]/ul/li[9]/a/span")
+            //"//*[@class='b-aside-nav_link')]")
+    //"//*[@id='rubric_panel']/li[1]/a/span")
+            //*[@id=\"rubric_panel\"]/li[1]/a/i")
+            //"//*[@id='rubric_menu']/li[1]/a/span")
+            //"//*[contains(text(),'Рубрики')]")
+    WebElement mobileMoreSections;
+
+    @FindBy(xpath = "//*[@id='section_list']/li[2]/ul/li[10]/a/span")
+            //*[@id='rubric_menu']/li[12]/a/span")
     WebElement auto;
 
 //    @FindBy(xpath = "//input[@value='Go']")
@@ -41,15 +58,25 @@ public class HomePagePf extends AbstractPagePf {
     public HomePagePf financeOpen() throws InterruptedException {
         waitForElementVisible(section);
         section.click();
-        //waitForElementVisible(finance);
         finance.click();
         return this;
     }
 
-    public HomePagePf autoOpen() {
-        waitForElementVisible(section);
-        section.click();
-        waitForElementVisible(auto);
+    public HomePagePf mobileVersionEnable() throws InterruptedException {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,8000)", "");
+        waitForElementVisible(mobileVersionEnableLink);
+        mobileVersionEnableLink.click();
+        //Thread.sleep(180000);
+        return this;
+    }
+
+    public HomePagePf autoOpen() throws InterruptedException {
+        waitForElementVisible(mobileSection);
+        mobileSection.click();
+        Thread.sleep(1000);
+        mobileMoreSections.click();
+        Thread.sleep(1000);
         auto.click();
         return this;
     }

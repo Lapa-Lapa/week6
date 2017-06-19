@@ -1,12 +1,10 @@
 package pf.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 public class FinancePagePf extends AbstractPagePf {
 
@@ -26,11 +24,20 @@ public class FinancePagePf extends AbstractPagePf {
     WebElement sumOfCreditField;
 
     @FindBy(name = "submit")
-            //(xpath = "//*[@type='submit']")
-    WebElement submitButton;
+    //(xpath = "//*[@type='submit']")
+            WebElement submitButton;
 
     @FindBy(xpath = "//*[@id='kred_compare']/table")
     WebElement tableWithResults;
+
+    @FindBy(xpath = "//span[contains(text(),'Ставка')]")
+    //(xpath="//*[@id=\"kred_compare\"]/table/tbody/tr[1]/th[3]/a/span")
+
+            //*[@id="slider"]/div/div[1]/div
+            WebElement sortByRateItem;
+
+    @FindBy(xpath = "//*[@class='wrapper']/big")
+    WebElement thehighestRate;
 
 //    @FindBy(css = "#priceblock_ourprice")
 //    private WebElement itemPrice;
@@ -68,21 +75,21 @@ public class FinancePagePf extends AbstractPagePf {
     public FinancePagePf getResults() throws InterruptedException {
         waitForElementVisible(tableWithResults);
         Thread.sleep(1000);
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,300)", "");
-        Thread.sleep(2000);
         waitForElementVisible(submitButton);
         submitButton.click();
-        Thread.sleep(360000);
-        String results = tableWithResults.getText();
-        System.out.println(results);
-        //Thread.sleep(360000);
-        Assert.assertEquals("15%", results, "есть хоть один кредит со ставкой 15%");
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,450)", "");
+        sortByRateItem.click();
+        jse.executeScript("window.scrollBy(0,450)", "");
+        Thread.sleep(2000); //Assending
+        sortByRateItem.click();
+        jse.executeScript("window.scrollBy(0,450)", "");
+        Thread.sleep(2000); //Desending
+        String results = thehighestRate.getText();
+        double res = Double.parseDouble(results.substring(0,2));
+        if (res > 15) {
+            System.out.println("Есть ставка более 15% и это:"+results);
+        } else System.out.println("Нет ставки более 15%, самая большая " + res +"%" );
         return new FinancePagePf(driver);
     }
-
-
-//
 }
-//String priceTextValue = itemPrice.getText();
-//return Double.parseDouble(priceTextValue.substring(1));
