@@ -8,13 +8,13 @@ import org.openqa.selenium.support.ui.Select;
 
 public class FinancePagePf extends AbstractPagePf {
 
-    @FindBy(xpath = "//*[@class='button flat-white']")
+    @FindBy(xpath = "//[@class='button flat-white']")
     WebElement choseCreditButton;
 
-    @FindBy(xpath = "//*[contains(text(),'Все условия кредитования')]")
+    @FindBy(xpath = "//[contains(text(),'Все условия кредитования')]")
     WebElement additionalOptionsForCredit;
 
-    @FindBy(xpath = "//*[@id='bank_list']")
+    @FindBy(xpath = "//[@id='bank_list']")
     WebElement bankThatGiveCreditList;
 
     @FindBy(name = "sum")
@@ -23,13 +23,13 @@ public class FinancePagePf extends AbstractPagePf {
     @FindBy(name = "submit")
     WebElement submitButton;
 
-    @FindBy(xpath = "//*[@id='kred_compare']/table")
+    @FindBy(xpath = "//[@id='kred_compare']/table")
     WebElement tableWithResults;
 
     @FindBy(xpath = "//span[contains(text(),'Ставка')]")
     WebElement sortByRateItem;
 
-    @FindBy(xpath = "//*[@class='wrapper']/big")
+    @FindBy(xpath = "//[@class='wrapper']/big")
     WebElement thehighestRate;
 
     public FinancePagePf(WebDriver driver) {
@@ -60,7 +60,6 @@ public class FinancePagePf extends AbstractPagePf {
 
     public FinancePagePf getResults() throws InterruptedException {
         waitForElementVisible(tableWithResults);
-        Thread.sleep(1000);
         waitForElementVisible(submitButton);
         submitButton.click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
