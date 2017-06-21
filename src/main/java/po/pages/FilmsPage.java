@@ -9,13 +9,13 @@ public class FilmsPage extends AbstractPage {
 
     private static final By films = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
-    private static final By date9Jule = By.xpath("//[@title='воскресенье, 9 июля']");
+    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 9 июля']");
     private static final By popupWindowCloseButton = By.id("closebtn");
-    private static final By popupFrame = By.xpath("//[contains(@src, 'https://api.traq.li/publisher/unattended')]");
-    private static final By defaultTimeStartPosition = By.xpath("//[@id='slider']/div/div[1]/div");
-    private static final By filmTransformers = By.xpath("//[contains(text(),'Трансформеры: Последний рыцарь')]");
-    private static final By areaForShots = By.xpath("//[@class='fotorama__thumb-border']");
-    private static final By anyPicture = By.xpath("//[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
+    private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
+    private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
+    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+    private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
+    private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
     private static final Integer TIME = 20;
     private static String window="";
 

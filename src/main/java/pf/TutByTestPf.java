@@ -1,7 +1,12 @@
 package pf;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,6 +16,8 @@ import pf.pages.FilmsPagePf;
 import pf.pages.FinancePagePf;
 import pf.pages.HomePagePf;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TutByTestPf {
@@ -18,11 +25,31 @@ public class TutByTestPf {
 
     @BeforeClass(description = "Start browser")
     private void initBrowser() {
+
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(125, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        ChromeOptions options = new ChromeOptions();
+
+        //https://www.youtube.com/watch?v=k4c17X6cXxQ
+        Map<String,Object> prefs= new HashMap<String,Object>();
+        prefs.put("profile.block_third_party_cookies",false);
+        prefs.put("frames",false);
+        prefs.put("cookies",false);
+        prefs.put("javascript",false);
+        prefs.put("applicationCacheEnabled",true);
+        //prefs.put("cookies",false);
+
+        options.setExperimentalOption("prefs",prefs);
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        driver = new ChromeDriver(capabilities);
+        driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
+        //driver.manage().window().maximize();
+//        HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.CHROME);
+//        driver.setJavascriptEnabled(true);
+//        WebSettings settings = getSettings();
+//        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+//        settings.setJavaScriptEnabled(true);
     }
 
     @Test(description = "Афиша.tut.by")
