@@ -22,7 +22,9 @@ public class FilmsPage extends AbstractPage {
     public FilmsPage(WebDriver driver) {
         super(driver);
     }
-    public FilmsPage openFilms() {
+    public FilmsPage openFilms() throws InterruptedException {
+        Thread.sleep(5000);
+        waitForElementVisible(films);
         driver.findElement(films).click();
         return new FilmsPage(driver);
     }

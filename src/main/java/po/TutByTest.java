@@ -7,9 +7,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import po.pages.AutoPage;
+import po.pages.FilmsPage;
 import po.pages.FinancePage;
 import po.pages.HomePage;
-import po.pages.FilmsPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,8 +34,13 @@ public class TutByTest {
      5) Выбрать Трансформеры
      6) Убедиться, что кадров из фильма 4 штуки*/
     public void afishaTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver).open();
-        FilmsPage filmsPage = new FilmsPage(driver).openFilms().moveAvailableDatesToRight().selectDate().popupWindowClose().selectTime().selectFilm();
+        HomePage homePage = new HomePage(driver)
+                .open();
+        FilmsPage filmsPage = new FilmsPage(driver)
+                .openFilms()
+                .moveAvailableDatesToRight()
+                .selectDate().popupWindowClose()
+                .selectTime().selectFilm();
         int i = filmsPage.allShots();
         Assert.assertEquals(i, 4, "There are four shots to this film");
     }
@@ -48,10 +53,14 @@ public class TutByTest {
      4) Сумма кредита 3000
      5) Убедиться, что есть хоть один кредит со ставкой > 15%*/
     public void financeTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver);
-        homePage.open().financeOpen();
-        FinancePage financePage = new FinancePage(driver);
-        financePage.pressChoseCreditButton().setBelarusBankAsOptionForCredit().setSumOfCredit().getResults();
+        HomePage homePage = new HomePage(driver)
+                .open()
+                .financeOpen();
+        FinancePage financePage = new FinancePage(driver)
+                .pressChoseCreditButton()
+                .setBelarusBankAsOptionForCredit()
+                .setSumOfCredit()
+                .getResults();
     }
 
     @Test(description = "Auto.tut.by", priority = 2)
@@ -66,12 +75,17 @@ public class TutByTest {
      8) Проверить, что развернулся на весь экран.*/
     public void autoTutByTest() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
-        homePage.open().mobileVersionEnable().autoOpen();
-        AutoPage autoPage = new AutoPage(driver).videoSectionOpen().postOpen().videoPlayButtonPressAndFullSize().assertScalingToFullScreen();
+        homePage.open().mobileVersionEnable()
+                .autoOpen();
+        AutoPage autoPage = new AutoPage(driver)
+                .videoSectionOpen()
+                .postOpen()
+                .videoPlayButtonPressAndFullSize()
+                .assertScalingToFullScreen();
     }
 
     @AfterClass(description = "close browser")
-    public void kill(){
+    public void kill() {
         driver.close();
     }
 }

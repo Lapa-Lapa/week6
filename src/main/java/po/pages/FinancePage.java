@@ -3,42 +3,34 @@ package po.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import pf.pages.FinancePagePf;
 
 public class FinancePage extends AbstractPage {
-    private static final By choseCreditButton  = By.xpath("//[@class='button flat-white']");
-    private static final By additionalOptionsForCredit  = By.xpath("//[contains(text(),'Все условия кредитования')]");
-    private static final By bankThatGiveCreditList  = By.xpath("//[@id='bank_list']");
+    private static final By choseCreditButton  = By.xpath("//a[@class='button flat-white']");
+    private static final By popUpWindowClose  = By.xpath("//span[@class='scrollable-close')]");
+    private static final By additionalOptionsForCredit  = By.id("show_full_filter");
+    private static final By bankThatGiveCreditList  = By.xpath("//select[@id='bank_list']");
     private static final By sumOfCreditField  = By.name("sum");
     private static final By submitButton  = By.name("submit");
-    private static final By tableWithResults  = By.xpath("//[@id='kred_compare']/table");
+    private static final By tableWithResults  = By.xpath("//div[@id='kred_compare']/table");
     private static final By sortByRateItem  = By.xpath("//span[contains(text(),'Ставка')]");
-    private static final By thehighestRate  = By.xpath("//[@class='wrapper']/big");
+    private static final By thehighestRate  = By.xpath("//div[@class='wrapper']/big");
 
     public FinancePage(WebDriver driver) {
         super(driver);
     }
 
-//    public FilmsPage openFirstSearchResult(){
-//        waitForElementPresent(FIRST_RESULT_LOCATOR);
-//        driver.findElement(FIRST_RESULT_LOCATOR).click();
-//        return new FilmsPage(driver);
-//    }
     public FinancePage pressChoseCreditButton() {
         waitForElementPresent(choseCreditButton);
         driver.findElement(choseCreditButton).click();
         return new FinancePage(driver);
     }
 
-    public FinancePage setBelarusBankAsOptionForCredit() {
+    public FinancePage setBelarusBankAsOptionForCredit(){
         waitForElementPresent(additionalOptionsForCredit);
         driver.findElement(additionalOptionsForCredit).click();
-//        WebElement dropdown = bankThatGiveCreditList;
-//        Select bank = new Select(dropdown);
-//        bank.selectByIndex(8);
+        Select bank = new Select(driver.findElement(bankThatGiveCreditList));
+        bank.selectByIndex(8);
         return new FinancePage(driver);
     }
 

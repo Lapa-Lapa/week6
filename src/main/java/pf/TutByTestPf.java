@@ -1,11 +1,8 @@
 package pf;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -25,31 +22,22 @@ public class TutByTestPf {
 
     @BeforeClass(description = "Start browser")
     private void initBrowser() {
-
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
-
-        //https://www.youtube.com/watch?v=k4c17X6cXxQ
-        Map<String,Object> prefs= new HashMap<String,Object>();
-        prefs.put("profile.block_third_party_cookies",false);
-        prefs.put("frames",false);
-        prefs.put("cookies",false);
-        prefs.put("javascript",false);
-        prefs.put("applicationCacheEnabled",true);
-        //prefs.put("cookies",false);
-
-        options.setExperimentalOption("prefs",prefs);
+        //https://www.youtube.com/watch?v=k4c17X6cXxQ//Но чет не работает
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("profile.block_third_party_cookies", false);
+        prefs.put("frames", false);
+        prefs.put("cookies", false);
+        prefs.put("javascript", false);
+        prefs.put("applicationCacheEnabled", true);
+        options.setExperimentalOption("prefs", prefs);
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         driver = new ChromeDriver(capabilities);
         driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
-        //driver.manage().window().maximize();
-//        HtmlUnitDriver driver = new HtmlUnitDriver(BrowserVersion.CHROME);
-//        driver.setJavascriptEnabled(true);
-//        WebSettings settings = getSettings();
-//        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-//        settings.setJavaScriptEnabled(true);
+        driver.manage().window().maximize();
     }
 
     @Test(description = "Афиша.tut.by")
@@ -61,10 +49,16 @@ public class TutByTestPf {
      5) Выбрать Трансформеры
      6) Убедиться, что кадров из фильма 4 штуки*/
     public void afishaTutByTest() throws InterruptedException {
-        HomePagePf homePage = new HomePagePf(driver);
-        homePage.open().afishaOpen();
-        FilmsPagePf filmsPage = new FilmsPagePf(driver).openFilms().moveAvailableDatesToRight().selectDate();
-        filmsPage.popupWindowClose().selectTime().selectFilm();
+        HomePagePf homePage = new HomePagePf(driver)
+                .open()
+                .afishaOpen();
+        FilmsPagePf filmsPage = new FilmsPagePf(driver)
+                .openFilms()
+                .moveAvailableDatesToRight()
+                .selectDate()
+                .popupWindowClose()
+                .selectTime()
+                .selectFilm();
         int i = filmsPage.allShots();
         Assert.assertEquals(i, 4, "There are four shots to this film");
     }
@@ -77,11 +71,14 @@ public class TutByTestPf {
      4) Сумма кредита 3000
      5) Убедиться, что есть хоть один кредит со ставкой > 15%*/
     public void financeTutByTest() throws InterruptedException {
-        HomePagePf homePage = new HomePagePf(driver);
-        homePage.open().financeOpen();
-        FinancePagePf financePage = new FinancePagePf(driver);
-        financePage.pressChoseCreditButton().setBelarusBankAsOptionForCredit()
-                .setSumOfCredit().getResults();
+        HomePagePf homePage = new HomePagePf(driver)
+                .open()
+                .financeOpen();
+        FinancePagePf financePage = new FinancePagePf(driver)
+                .pressChoseCreditButton()
+                .setBelarusBankAsOptionForCredit()
+                .setSumOfCredit()
+                .getResults();
     }
 
     @Test(description = "Auto.tut.by")
@@ -95,10 +92,15 @@ public class TutByTestPf {
      7) Развернуть плеер на весь экран
      8) Проверить, что развернулся на весь экран.*/
     public void autoTutByTest() throws InterruptedException {
-        HomePagePf homePage = new HomePagePf(driver);
-        homePage.open().mobileVersionEnable().autoOpen();
-        AutoPagePf autoPage = new AutoPagePf(driver).videoSectionOpen()
-                .postOpen().videoPlayButtonPressAndFullSize().assertScalingToFullScreen();
+        HomePagePf homePage = new HomePagePf(driver)
+                .open()
+                .mobileVersionEnable()
+                .autoOpen();
+        AutoPagePf autoPage = new AutoPagePf(driver)
+                .videoSectionOpen()
+                .postOpen()
+                .videoPlayButtonPressAndFullSize()
+                .assertScalingToFullScreen();
     }
 
     @AfterClass(description = "close browser")

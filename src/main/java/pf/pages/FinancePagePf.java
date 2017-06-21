@@ -10,34 +10,31 @@ import org.openqa.selenium.support.ui.Select;
 public class FinancePagePf extends AbstractPagePf {
 
     @FindBy(xpath = "//a[@class='button flat-white']")
-    WebElement choseCreditButton;
+    public WebElement choseCreditButton;
 
     @FindBy(xpath = "//span[@class='scrollable-close')]")
-    WebElement popUpWindowClose;
+    public WebElement popUpWindowClose;
 
     @FindBy(id = "show_full_filter")
-    //*[contains(text(),'Все условия кредитования')]")
-            WebElement additionalOptionsForCredit;
+    public WebElement additionalOptionsForCredit;
 
     @FindBy(xpath = "//select[@id='bank_list']")
-    WebElement bankThatGiveCreditList;
+    public WebElement bankThatGiveCreditList;
 
     @FindBy(name = "sum")
-    WebElement sumOfCreditField;
+    public WebElement sumOfCreditField;
 
     @FindBy(name = "submit")
-    WebElement submitButton;
+    public WebElement submitButton;
 
     @FindBy(xpath = "//div[@id='kred_compare']/table")
-    WebElement tableWithResults;
+    public WebElement tableWithResults;
 
     @FindBy(xpath = "//span[contains(text(),'Ставка')]")
-    WebElement sortByRateItem;
+    public WebElement sortByRateItem;
 
     @FindBy(xpath = "//div[@class='wrapper']/big")
-    WebElement thehighestRate;
-
-    String window;
+    public WebElement thehighestRate;
 
     public FinancePagePf(WebDriver driver) {
         super(driver);
@@ -46,12 +43,15 @@ public class FinancePagePf extends AbstractPagePf {
     public FinancePagePf pressChoseCreditButton() {
         waitForElementVisible(choseCreditButton);
         choseCreditButton.click();
-        window = driver.getWindowHandle();
         return new FinancePagePf(driver);
     }
 
     public FinancePagePf setBelarusBankAsOptionForCredit() throws InterruptedException {
         Thread.sleep(1500);
+        //TODO: style= 'display:block' --> style= 'display:none'
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("document.getElementsByTagName('DIV')[9].style= 'display:none';");
+        //"document.getElementById('periodId').style.display='block';");
         try {
             popUpWindowClose.click();
             additionalOptionsForCredit.click();
@@ -60,8 +60,7 @@ public class FinancePagePf extends AbstractPagePf {
         } catch (Exception exception) {
             System.out.println("Pop up window disappear");
         }
-        //driver.switchTo().window(window);
-        Thread.sleep(1500);
+        Thread.sleep(6000);// Вот в этот момент закрываем поп-ап руками
         additionalOptionsForCredit.click();
         WebElement dropdown = bankThatGiveCreditList;
         Select bank = new Select(dropdown);

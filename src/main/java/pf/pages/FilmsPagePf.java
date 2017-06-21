@@ -1,43 +1,43 @@
 package pf.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class FilmsPagePf extends AbstractPagePf {
 
     @FindBy(xpath = "//a[contains(text(),'Кино')]")
-    WebElement films;
+    public WebElement films;
 
     @FindBy(xpath = "//i[@class='icon-right a-icon']")
-    WebElement arrowRightAvailableDates;
+    public WebElement arrowRightAvailableDates;
 
     @FindBy(xpath = "//a[@title='воскресенье, 9 июля']")
-    WebElement date9Jule;
+    public WebElement date9Jule;
 
     @FindBy(id = "closebtn")
-    WebElement popupWindowCloseButton;
+    public WebElement popupWindowCloseButton;
 
     @FindBy(xpath = "//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]")
-    WebElement popupFrame;
+    public WebElement popupFrame;
 
     @FindBy(xpath = "//div[@id='slider']/div/div[1]/div")
-    WebElement defaultTimeStartPosition;
+    public WebElement defaultTimeStartPosition;
 
     @FindBy(xpath = "//span[contains(text(),'Трансформеры: Последний рыцарь')]")
-    WebElement filmTransformers;
+    public WebElement filmTransformers;
 
     @FindBy(xpath = "//div[@class='fotorama__thumb-border']")
-    WebElement areaForShots;
+    public WebElement areaForShots;
 
     @FindBy(xpath = "//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]")
-    WebElement anyPicture;
+    public List<WebElement> anyPicture;
 
-    Integer TIME=20;
-    String window;
+    final Integer TIME = 20;
 
     public FilmsPagePf(WebDriver driver) {
         super(driver);
@@ -62,14 +62,14 @@ public class FilmsPagePf extends AbstractPagePf {
         return new FilmsPagePf(driver);
     }
 
-    public FilmsPagePf selectDate() {
+    public FilmsPagePf selectDate() throws InterruptedException {
         waitForElementVisible(date9Jule);
         date9Jule.click();
         return new FilmsPagePf(driver);
     }
 
     public FilmsPagePf popupWindowClose() throws InterruptedException {
-        window = driver.getWindowHandle();
+        String window = driver.getWindowHandle();
         Thread.sleep(3000);
         driver.switchTo().frame(popupFrame);
         waitForElementVisible(popupWindowCloseButton);
@@ -104,7 +104,7 @@ public class FilmsPagePf extends AbstractPagePf {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0,pageYOffset)", "");
         waitForElementVisible(areaForShots);
-        int i = areaForShots.findElements(By.xpath("//*[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]")).size();
+        int i = anyPicture.size();
         return i;
     }
 }

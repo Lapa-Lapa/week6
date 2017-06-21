@@ -3,15 +3,19 @@ package po.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class HomePage extends AbstractPage {
     private static final By afisha = By.xpath("//a[contains(text(),'Афиша')]");
-    private static final By finance = By.xpath("/[@class='b-topbar-more-list']/li[4]");
-    private static final By section = By.xpath("//[contains(text(),'Разделы')]");
-    private static final By mobileVersionEnableLink = By.xpath("//[contains(text(),'Версия для смартфонов')]]");
+    private static final By section = By.xpath("//a[contains(text(),'Разделы')]");
+    private static final By finance = By.xpath("//ul[@class='b-topbar-more-list']/li[4]");
+    private static final By popupFrame = By.xpath("//iframe[1]");
+    private static final By popupWindowCloseButton = By.id("smartwelcomeClose");
+
+    private static final By mobileVersionEnableLink = By.xpath("//a[contains(text(),'Версия для смартфонов')]]");
     private static final By mobileSection = By.xpath("menu_target");
-    private static final By mobileMoreSections = By.xpath("//[@id='responsive_menu']/li[6]/ul/li[9]/a/span");
-    private static final By auto = By.xpath("//[@id='section_list']/li[2]/ul/li[10]/a/span");
+    private static final By mobileMoreSections = By.xpath("[@id='responsive_menu']//span[@class=contains( text(),'Все разделы')]");
+    private static final By auto = By.xpath("//i[@class='b-res-icon res1752 b-icon']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -41,6 +45,12 @@ public class HomePage extends AbstractPage {
     }
 
     public HomePage autoOpen() throws InterruptedException {
+        String window = driver.getWindowHandle();
+        Thread.sleep(2000);
+        driver.switchTo().frame((WebElement) popupFrame);
+        Thread.sleep(2000);
+        driver.findElement(popupWindowCloseButton).click();
+        driver.switchTo().window(window);
         driver.findElement(mobileSection).click();
         driver.findElement(mobileMoreSections).click();
         driver.findElement(auto).click();

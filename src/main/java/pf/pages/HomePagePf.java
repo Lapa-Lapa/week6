@@ -8,31 +8,32 @@ import org.openqa.selenium.support.FindBy;
 public class HomePagePf extends AbstractPagePf {
 
     @FindBy(xpath = "//a[contains(text(),'Афиша')]")
-    WebElement afisha;
+    public WebElement afisha;
 
     @FindBy(xpath = "//a[contains(text(),'Разделы')]")
-    WebElement section;
+    public WebElement section;
 
     @FindBy(xpath = "//ul[@class='b-topbar-more-list']/li[4]")
-    WebElement finance;
+    public WebElement finance;
 
     @FindBy(xpath = "//iframe[1]")
-    WebElement popupFrame;
+    public WebElement popupFrame;
 
-    @FindBy(id = "welcomeClose")
-    WebElement popupWindowCloseButton;
+    @FindBy(id = "smartwelcomeClose")
+    public WebElement popupWindowCloseButton;
 
     @FindBy(xpath = "//a[contains(text(),'Версия для смартфонов')]")
-    WebElement mobileVersionEnableLink;
+    public WebElement mobileVersionEnableLink;
 
     @FindBy(id = "menu_target")
-    WebElement mobileSection;
+    public WebElement mobileSection;
 
-    @FindBy(xpath = "//[@id='responsive_menu']/li[6]/ul/li[9]/a/span")
-    WebElement mobileMoreSections;
+    @FindBy(xpath = "//ul[@id='responsive_menu']//span[@class=contains( text(),'Все разделы')]")
+            //ul[@id='responsive_menu']//span[@class='b-aside-nav_item_title'][@class=contains( text(),'Все разделы')]
+    public WebElement mobileMoreSections;
 
-    @FindBy(xpath = "//[@id='section_list']/li[2]/ul/li[10]/a/span")
-    WebElement auto;
+    @FindBy(xpath = "//i[@class='b-res-icon res1752 b-icon']")
+    public WebElement auto;
 
     public HomePagePf(WebDriver driver) { //конструктор класса
         super(driver);
@@ -57,25 +58,25 @@ public class HomePagePf extends AbstractPagePf {
     }
 
     public HomePagePf mobileVersionEnable() throws InterruptedException {
-        //String window = driver.getWindowHandle();
-        Thread.sleep(1500000);
-        driver.switchTo().frame(popupFrame);
-        waitForElementVisible(popupWindowCloseButton);
-        popupWindowCloseButton.click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0,8000)", "");
-        //driver.switchTo().window(window);
         waitForElementVisible(mobileVersionEnableLink);
         mobileVersionEnableLink.click();
         return this;
     }
 
     public HomePagePf autoOpen() throws InterruptedException {
+        String window = driver.getWindowHandle();
+        Thread.sleep(2000);
+        driver.switchTo().frame(popupFrame);
+        Thread.sleep(2000);
+        popupWindowCloseButton.click();
+        driver.switchTo().window(window);
         waitForElementVisible(mobileSection);
         mobileSection.click();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         mobileMoreSections.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         auto.click();
         return this;
     }
