@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePagePf extends AbstractPagePf {
+public class HomePage extends AbstractPage {
 
     @FindBy(xpath = "//a[contains(text(),'Афиша')]")
     public WebElement afisha;
@@ -32,32 +32,32 @@ public class HomePagePf extends AbstractPagePf {
             //ul[@id='responsive_menu']//span[@class='b-aside-nav_item_title'][@class=contains( text(),'Все разделы')]
     public WebElement mobileMoreSections;
 
-    @FindBy(xpath = "//i[@class='b-res-icon res1752 b-icon']")
+    @FindBy(xpath = "//i[@class='b-res-icon res1752 b-icon']/../span")
     public WebElement auto;
 
-    public HomePagePf(WebDriver driver) { //конструктор класса
+    public HomePage(WebDriver driver) { //конструктор класса
         super(driver);
     }
 
-    public HomePagePf open() {
+    public HomePage open() {
         driver.get("https://www.tut.by");
         return this;
     }
 
-    public HomePagePf afishaOpen() {
+    public HomePage afishaOpen() {
         waitForElementVisible(afisha);
         afisha.click();
         return this;
     }
 
-    public HomePagePf financeOpen() throws InterruptedException {
+    public HomePage financeOpen() throws InterruptedException {
         waitForElementVisible(section);
         section.click();
         finance.click();
         return this;
     }
 
-    public HomePagePf mobileVersionEnable() throws InterruptedException {
+    public HomePage mobileVersionEnable() throws InterruptedException {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("window.scrollBy(0,8000)", "");
         waitForElementVisible(mobileVersionEnableLink);
@@ -65,18 +65,19 @@ public class HomePagePf extends AbstractPagePf {
         return this;
     }
 
-    public HomePagePf autoOpen() throws InterruptedException {
+    public HomePage autoOpen() throws InterruptedException {
         String window = driver.getWindowHandle();
-        Thread.sleep(2000);
+        try{Thread.sleep(2000);
         driver.switchTo().frame(popupFrame);
         Thread.sleep(2000);
-        popupWindowCloseButton.click();
+        popupWindowCloseButton.click();}catch(Exception exseption){}
         driver.switchTo().window(window);
         waitForElementVisible(mobileSection);
         mobileSection.click();
         Thread.sleep(3000);
         mobileMoreSections.click();
         Thread.sleep(2000);
+        waitForElementVisible(auto);
         auto.click();
         return this;
     }

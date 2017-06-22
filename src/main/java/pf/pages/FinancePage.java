@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class FinancePagePf extends AbstractPagePf {
+public class FinancePage extends AbstractPage {
 
     @FindBy(xpath = "//a[@class='button flat-white']")
     public WebElement choseCreditButton;
@@ -36,17 +36,17 @@ public class FinancePagePf extends AbstractPagePf {
     @FindBy(xpath = "//div[@class='wrapper']/big")
     public WebElement thehighestRate;
 
-    public FinancePagePf(WebDriver driver) {
+    public FinancePage(WebDriver driver) {
         super(driver);
     }
 
-    public FinancePagePf pressChoseCreditButton() {
+    public FinancePage pressChoseCreditButton() {
         waitForElementVisible(choseCreditButton);
         choseCreditButton.click();
-        return new FinancePagePf(driver);
+        return new FinancePage(driver);
     }
 
-    public FinancePagePf setBelarusBankAsOptionForCredit() throws InterruptedException {
+    public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
         Thread.sleep(1500);
         //TODO: style= 'display:block' --> style= 'display:none'
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -66,16 +66,16 @@ public class FinancePagePf extends AbstractPagePf {
         Select bank = new Select(dropdown);
         bank.selectByIndex(8);
         Thread.sleep(5000);
-        return new FinancePagePf(driver);
+        return new FinancePage(driver);
     }
 
-    public FinancePagePf setSumOfCredit() {
+    public FinancePage setSumOfCredit() {
         waitForElementVisible(sumOfCreditField);
         sumOfCreditField.sendKeys("3000");
-        return new FinancePagePf(driver);
+        return new FinancePage(driver);
     }
 
-    public FinancePagePf getResults() throws InterruptedException {
+    public FinancePage getResults() throws InterruptedException {
         waitForElementVisible(tableWithResults);
         waitForElementVisible(submitButton);
         submitButton.click();
@@ -92,6 +92,6 @@ public class FinancePagePf extends AbstractPagePf {
         if (res > 15) {
             System.out.println("Есть ставка более 15% и это:" + results);
         } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
-        return new FinancePagePf(driver);
+        return new FinancePage(driver);
     }
 }

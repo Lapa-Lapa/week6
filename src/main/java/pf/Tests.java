@@ -1,27 +1,42 @@
-package po;
+package pf;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import po.pages.AutoPage;
-import po.pages.FilmsPage;
-import po.pages.FinancePage;
-import po.pages.HomePage;
+import pf.pages.AutoPage;
+import pf.pages.FilmsPage;
+import pf.pages.FinancePage;
+import pf.pages.HomePage;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class TutByTest {
+public class Tests {
     private WebDriver driver;
 
     @BeforeClass(description = "Start browser")
     private void initBrowser() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+        ChromeOptions options = new ChromeOptions();
+        //https://www.youtube.com/watch?v=k4c17X6cXxQ//Но чет не работает
+        Map<String, Object> prefs = new HashMap<String, Object>();
+        prefs.put("profile.block_third_party_cookies", false);
+        prefs.put("frames", false);
+        prefs.put("cookies", false);
+        prefs.put("javascript", false);
+        prefs.put("applicationCacheEnabled", true);
+        options.setExperimentalOption("prefs", prefs);
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        driver = new ChromeDriver(capabilities);
+        driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
@@ -35,12 +50,14 @@ public class TutByTest {
      6) Убедиться, что кадров из фильма 4 штуки*/
     public void afishaTutByTest() throws InterruptedException {
         HomePage homePage = new HomePage(driver)
-                .open();
+                .open()
+                .afishaOpen();
         FilmsPage filmsPage = new FilmsPage(driver)
                 .openFilms()
-                .moveAvailableDatesToRight()
-                .selectDate().popupWindowClose()
-                .selectTime().selectFilm();
+                .selectDate()
+                .popupWindowClose()
+                .selectTime()
+                .selectFilm();
         int i = filmsPage.allShots();
         Assert.assertEquals(i, 4, "There are four shots to this film");
     }
@@ -74,8 +91,9 @@ public class TutByTest {
      7) Развернуть плеер на весь экран
      8) Проверить, что развернулся на весь экран.*/
     public void autoTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver);
-        homePage.open().mobileVersionEnable()
+        HomePage homePage = new HomePage(driver)
+                .open()
+                .mobileVersionEnable()
                 .autoOpen();
         AutoPage autoPage = new AutoPage(driver)
                 .videoSectionOpen()

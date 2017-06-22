@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class FilmsPagePf extends AbstractPagePf {
+public class FilmsPage extends AbstractPage {
 
     @FindBy(xpath = "//a[contains(text(),'Кино')]")
     public WebElement films;
@@ -39,17 +39,17 @@ public class FilmsPagePf extends AbstractPagePf {
 
     final Integer TIME = 20;
 
-    public FilmsPagePf(WebDriver driver) {
+    public FilmsPage(WebDriver driver) {
         super(driver);
     }
 
-    public FilmsPagePf openFilms() {
+    public FilmsPage openFilms() {
         waitForElementVisible(films);
         films.click();
-        return new FilmsPagePf(driver);
+        return new FilmsPage(driver);
     }
 
-    public FilmsPagePf moveAvailableDatesToRight() throws InterruptedException {
+    public FilmsPage selectDate() {
         for (int i = 0; i < 10; i++) {
             waitForElementVisible(arrowRightAvailableDates);
             arrowRightAvailableDates.click();
@@ -59,45 +59,38 @@ public class FilmsPagePf extends AbstractPagePf {
             } catch (Exception exception) {
             }
         }
-        return new FilmsPagePf(driver);
+        return new FilmsPage(driver);
     }
 
-    public FilmsPagePf selectDate() throws InterruptedException {
-        waitForElementVisible(date9Jule);
-        date9Jule.click();
-        return new FilmsPagePf(driver);
-    }
-
-    public FilmsPagePf popupWindowClose() throws InterruptedException {
-        String window = driver.getWindowHandle();
-        Thread.sleep(3000);
+    public FilmsPage popupWindowClose() throws InterruptedException {
+        Thread.sleep(1500);
         driver.switchTo().frame(popupFrame);
-        waitForElementVisible(popupWindowCloseButton);
         popupWindowCloseButton.click();
-        driver.switchTo().window(window);
-        return new FilmsPagePf(driver);
+        return new FilmsPage(driver);
     }
 
-    public FilmsPagePf selectTime() throws InterruptedException {
+    public FilmsPage selectTime() throws InterruptedException {
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
         Actions actions = new Actions(driver);
-        waitForElementVisible(defaultTimeStartPosition);
-        int a = TIME * 27;
-        if (a >= 385) {
+        final int a = TIME * 27;
+        if (a > 385) {
             int b = a - 385;
-            actions.click(defaultTimeStartPosition).moveByOffset(385, 0).click().release().perform();
-            actions.click(defaultTimeStartPosition).moveByOffset(b, 0).click().release().perform();
+            actions.click(defaultTimeStartPosition).moveByOffset(0, 385).click().build().perform();
+            Thread.sleep(5000000);
+            actions.click(defaultTimeStartPosition).moveByOffset(b, 0).click().build().perform();
         }
         if (a < 385) {
-            actions.click(defaultTimeStartPosition).moveByOffset(a, 0).click().release().perform();
+            actions.click(defaultTimeStartPosition).moveByOffset(a, 0).click().build().perform();
         }
         Thread.sleep(1000);
-        return new FilmsPagePf(driver);
+        return new FilmsPage(driver);
     }
 
-    public FilmsPagePf selectFilm() throws InterruptedException {
+    public FilmsPage selectFilm() throws InterruptedException {
         waitForElementVisible(filmTransformers);
         filmTransformers.click();
-        return new FilmsPagePf(driver);
+        return new FilmsPage(driver);
     }
 
     public int allShots() throws InterruptedException {
