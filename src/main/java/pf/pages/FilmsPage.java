@@ -37,7 +37,7 @@ public class FilmsPage extends AbstractPage {
     @FindBy(xpath = "//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]")
     public List<WebElement> anyPicture;
 
-    final Integer TIME = 20;
+    final int TIME = 20;
 
     public FilmsPage(WebDriver driver) {
         super(driver);
@@ -63,9 +63,12 @@ public class FilmsPage extends AbstractPage {
     }
 
     public FilmsPage popupWindowClose() throws InterruptedException {
-        Thread.sleep(1500);
-        driver.switchTo().frame(popupFrame);
-        popupWindowCloseButton.click();
+        Thread.sleep(3000);
+        try {
+            driver.switchTo().frame(popupFrame);
+            popupWindowCloseButton.click();
+        } catch (Exception exception) {
+        }
         return new FilmsPage(driver);
     }
 
@@ -73,16 +76,44 @@ public class FilmsPage extends AbstractPage {
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
         Actions actions = new Actions(driver);
-        final int a = TIME * 27;
-        if (a > 385) {
-            int b = a - 385;
-            actions.click(defaultTimeStartPosition).moveByOffset(0, 385).click().build().perform();
-            Thread.sleep(5000000);
-            actions.click(defaultTimeStartPosition).moveByOffset(b, 0).click().build().perform();
+        if (TIME == 10) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(45, 0).click().release().perform();
         }
-        if (a < 385) {
-            actions.click(defaultTimeStartPosition).moveByOffset(a, 0).click().build().perform();
+        if (TIME == 11) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(85, 0).click().release().perform();
         }
+        if (TIME == 12) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(130, 0).click().release().perform();
+        }
+        if (TIME == 13) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(175, 0).click().release().perform();
+        }
+        if (TIME == 14) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(215, 0).click().release().perform();
+        }
+        if (TIME == 17) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(385, 0).click().release().perform();
+        }
+        if (TIME == 20) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(385, 0).click().release().perform();
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(130, 0).click().release().perform();
+        }
+        if (TIME == 21) {
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(385, 0).click().release().perform();
+            Thread.sleep(1000);
+            actions.click(defaultTimeStartPosition).moveByOffset(175, 0).click().release().perform();
+        }
+
+
         Thread.sleep(1000);
         return new FilmsPage(driver);
     }

@@ -16,10 +16,10 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//ul[@class='b-topbar-more-list']/li[4]")
     public WebElement finance;
 
-    @FindBy(xpath = "//iframe[1]")
+    @FindBy(xpath = "//iframe[2]")
     public WebElement popupFrame;
 
-    @FindBy(id = "smartwelcomeClose")
+    @FindBy(className = "close")
     public WebElement popupWindowCloseButton;
 
     @FindBy(xpath = "//a[contains(text(),'Версия для смартфонов')]")
@@ -29,7 +29,7 @@ public class HomePage extends AbstractPage {
     public WebElement mobileSection;
 
     @FindBy(xpath = "//ul[@id='responsive_menu']//span[@class=contains( text(),'Все разделы')]")
-            //ul[@id='responsive_menu']//span[@class='b-aside-nav_item_title'][@class=contains( text(),'Все разделы')]
+    //ul[@id='responsive_menu']//span[@class='b-aside-nav_item_title'][@class=contains( text(),'Все разделы')]
     public WebElement mobileMoreSections;
 
     @FindBy(xpath = "//i[@class='b-res-icon res1752 b-icon']/../span")
@@ -59,20 +59,21 @@ public class HomePage extends AbstractPage {
 
     public HomePage mobileVersionEnable() throws InterruptedException {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,8000)", "");
+        //jse.executeScript("window.scrollBy(0,8000)", "");
+        jse.executeScript("arguments[0].scrollIntoView(true);",mobileVersionEnableLink);
         waitForElementVisible(mobileVersionEnableLink);
         mobileVersionEnableLink.click();
         return this;
     }
 
     public HomePage autoOpen() throws InterruptedException {
-        String window = driver.getWindowHandle();
-        try{Thread.sleep(2000);
+        Thread.sleep(5000);
         driver.switchTo().frame(popupFrame);
+        popupWindowCloseButton.click();
         Thread.sleep(2000);
-        popupWindowCloseButton.click();}catch(Exception exseption){}
+        String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        waitForElementVisible(mobileSection);
+        Thread.sleep(3000);
         mobileSection.click();
         Thread.sleep(3000);
         mobileMoreSections.click();

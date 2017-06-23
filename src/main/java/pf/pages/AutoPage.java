@@ -12,7 +12,7 @@ public class AutoPage extends AbstractPage {
     @FindBy(xpath = "//a[@class='entry__link']")
     public WebElement post;
 
-    @FindBy(xpath = "//iframe[contains(@src, '/www.dailymotion.com')]")
+    @FindBy(xpath = "//iframe[1]")
     public WebElement frame;
 
     @FindBy(className = "dmp_StartView-play-icon")

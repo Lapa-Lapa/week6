@@ -12,7 +12,7 @@ public class FinancePage extends AbstractPage {
     @FindBy(xpath = "//a[@class='button flat-white']")
     public WebElement choseCreditButton;
 
-    @FindBy(xpath = "//span[@class='scrollable-close')]")
+    @FindBy(className = "scrollable-close")
     public WebElement popUpWindowClose;
 
     @FindBy(id = "show_full_filter")
@@ -47,20 +47,11 @@ public class FinancePage extends AbstractPage {
     }
 
     public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
+        Thread.sleep(3000);
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
+        popUpWindowClose.click();
         Thread.sleep(1500);
-        //TODO: style= 'display:block' --> style= 'display:none'
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("document.getElementsByTagName('DIV')[9].style= 'display:none';");
-        //"document.getElementById('periodId').style.display='block';");
-        try {
-            popUpWindowClose.click();
-            additionalOptionsForCredit.click();
-            Actions actions = new Actions(driver);
-            actions.click(popUpWindowClose).build().perform();
-        } catch (Exception exception) {
-            System.out.println("Pop up window disappear");
-        }
-        Thread.sleep(6000);// Вот в этот момент закрываем поп-ап руками
         additionalOptionsForCredit.click();
         WebElement dropdown = bankThatGiveCreditList;
         Select bank = new Select(dropdown);
