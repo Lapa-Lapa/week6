@@ -1,44 +1,35 @@
 package pf;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pf.pages.AutoPage;
 import pf.pages.FilmsPage;
 import pf.pages.FinancePage;
 import pf.pages.HomePage;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import pf.utils.WebDriverSingleton;
 
 public class Tests {
-    private WebDriver driver;
-
-    @BeforeClass(description = "Start browser")
-    private void initBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        //https://www.youtube.com/watch?v=k4c17X6cXxQ//Но чет не работает
-        Map<String, Object> prefs = new HashMap<String, Object>();
-        prefs.put("profile.block_third_party_cookies", false);
-        prefs.put("frames", false);
-        prefs.put("cookies", false);
-        prefs.put("javascript", false);
-        prefs.put("applicationCacheEnabled", true);
-        options.setExperimentalOption("prefs", prefs);
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new ChromeDriver(capabilities);
-        driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
+//    private WebDriver driver;
+//
+//    @BeforeClass(description = "Start browser")
+//    private void initBrowser() {
+//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+//        ChromeOptions options = new ChromeOptions();
+//        //https://www.youtube.com/watch?v=k4c17X6cXxQ//Но чет не работает
+//        Map<String, Object> prefs = new HashMap<String, Object>();
+//        prefs.put("profile.block_third_party_cookies", false);
+//        prefs.put("frames", false);
+//        prefs.put("cookies", false);
+//        prefs.put("javascript", false);
+//        prefs.put("applicationCacheEnabled", true);
+//        options.setExperimentalOption("prefs", prefs);
+//        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//        driver = new ChromeDriver(capabilities);
+//        driver.manage().timeouts().pageLoadTimeout(75, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
+//        driver.manage().window().maximize();
+//    }
 
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
@@ -49,10 +40,10 @@ public class Tests {
      5) Выбрать Трансформеры
      6) Убедиться, что кадров из фильма 4 штуки*/
     public void afishaTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver)
+        HomePage homePage = new HomePage()
                 .open()
                 .afishaOpen();
-        FilmsPage filmsPage = new FilmsPage(driver)
+        FilmsPage filmsPage = new FilmsPage()
                 .openFilms()
                 .selectDate()
                 .popupWindowClose()
@@ -70,10 +61,10 @@ public class Tests {
      4) Сумма кредита 3000
      5) Убедиться, что есть хоть один кредит со ставкой > 15%*/
     public void financeTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver)
+        HomePage homePage = new HomePage()
                 .open()
                 .financeOpen();
-        FinancePage financePage = new FinancePage(driver)
+        FinancePage financePage = new FinancePage()
                 .pressChoseCreditButton()
                 .setBelarusBankAsOptionForCredit()
                 .setSumOfCredit()
@@ -91,11 +82,11 @@ public class Tests {
      7) Развернуть плеер на весь экран
      8) Проверить, что развернулся на весь экран.*/
     public void autoTutByTest() throws InterruptedException {
-        HomePage homePage = new HomePage(driver)
+        HomePage homePage = new HomePage()
                 .open()
                 .mobileVersionEnable()
                 .autoOpen();
-        AutoPage autoPage = new AutoPage(driver)
+        AutoPage autoPage = new AutoPage()
                 .videoSectionOpen()
                 .postOpen()
                 .videoPlayButtonPressAndFullSize()
@@ -104,6 +95,6 @@ public class Tests {
 
     @AfterClass(description = "close browser")
     public void kill() {
-        driver.close();
+        WebDriverSingleton.kill();
     }
 }

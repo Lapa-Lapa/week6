@@ -1,88 +1,59 @@
 package pf.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class FinancePage extends AbstractPage {
 
-    @FindBy(xpath = "//a[@class='button flat-white']")
-    public WebElement choseCreditButton;
+    private static final By choseCreditButton = By.xpath("//a[@class='button flat-white']");
+    private static final By popUpWindowClose = By.className("scrollable-close");
+    private static final By additionalOptionsForCredit = By.id("show_full_filter");
+    private static final By bankThatGiveCreditList = By.xpath("//select[@id='bank_list']");
+    private static final By sumOfCreditField = By.name("sum");
+    private static final By submitButton = By.name("submit");
+    private static final By tableWithResults = By.xpath("//div[@id='kred_compare']/table");
+    private static final By sortByRateItem = By.xpath("//span[contains(text(),'Ставка')]");
+    private static final By thehighestRate = By.xpath("//div[@class='wrapper']/big");
 
-    @FindBy(className = "scrollable-close")
-    public WebElement popUpWindowClose;
-
-    @FindBy(id = "show_full_filter")
-    public WebElement additionalOptionsForCredit;
-
-    @FindBy(xpath = "//select[@id='bank_list']")
-    public WebElement bankThatGiveCreditList;
-
-    @FindBy(name = "sum")
-    public WebElement sumOfCreditField;
-
-    @FindBy(name = "submit")
-    public WebElement submitButton;
-
-    @FindBy(xpath = "//div[@id='kred_compare']/table")
-    public WebElement tableWithResults;
-
-    @FindBy(xpath = "//span[contains(text(),'Ставка')]")
-    public WebElement sortByRateItem;
-
-    @FindBy(xpath = "//div[@class='wrapper']/big")
-    public WebElement thehighestRate;
-
-    public FinancePage(WebDriver driver) {
-        super(driver);
-    }
 
     public FinancePage pressChoseCreditButton() {
-        waitForElementVisible(choseCreditButton);
-        choseCreditButton.click();
-        return new FinancePage(driver);
-    }
+        driver.findElement(choseCreditButton).click();
+        return new FinancePage();    }
 
-    public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
-        Thread.sleep(3000);
+    public FinancePage setBelarusBankAsOptionForCredit(){
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        popUpWindowClose.click();
-        Thread.sleep(1500);
-        additionalOptionsForCredit.click();
-        WebElement dropdown = bankThatGiveCreditList;
+        waitForElementVisible(popUpWindowClose);
+        driver.findElement(popUpWindowClose).click();
+        String window2 = driver.getWindowHandle();
+        driver.switchTo().window(window2);
+        driver.findElement(additionalOptionsForCredit).click();
+        WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         bank.selectByIndex(8);
-        Thread.sleep(5000);
-        return new FinancePage(driver);
-    }
+        return new FinancePage();}
 
     public FinancePage setSumOfCredit() {
-        waitForElementVisible(sumOfCreditField);
-        sumOfCreditField.sendKeys("3000");
-        return new FinancePage(driver);
+        driver.findElement(sumOfCreditField).sendKeys("3000");
+        return new FinancePage();
     }
 
-    public FinancePage getResults() throws InterruptedException {
+    public FinancePage getResults(){
         waitForElementVisible(tableWithResults);
-        waitForElementVisible(submitButton);
-        submitButton.click();
+        driver.findElement(submitButton).click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(0,450)", "");
-        sortByRateItem.click();
-        jse.executeScript("window.scrollBy(0,450)", "");
-        Thread.sleep(2000); //Assending
-        sortByRateItem.click();
-        jse.executeScript("window.scrollBy(0,450)", "");
-        Thread.sleep(2000); //Desending
-        String results = thehighestRate.getText();
+        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
+        driver.findElement(sortByRateItem).click();//Assending
+        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
+        driver.findElement(sortByRateItem).click();//Desending
+        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
+        String results = driver.findElement(thehighestRate).getText();
         double res = Double.parseDouble(results.substring(0, 2));
         if (res > 15) {
             System.out.println("Есть ставка более 15% и это:" + results);
         } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
-        return new FinancePage(driver);
+        return new FinancePage();
     }
 }
