@@ -9,27 +9,6 @@ import pf.pages.HomePage;
 import pf.utils.WebDriverSingleton;
 
 public class Tests {
-//    private WebDriver driver;
-//
-//    @BeforeClass(description = "Start browser")
-//    private void initBrowser() {
-//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-//        ChromeOptions options = new ChromeOptions();
-//        //https://www.youtube.com/watch?v=k4c17X6cXxQ//Но чет не работает
-//        Map<String, Object> prefs = new HashMap<String, Object>();
-//        prefs.put("profile.block_third_party_cookies", false);
-//        prefs.put("frames", false);
-//        prefs.put("cookies", false);
-//        prefs.put("javascript", false);
-//        prefs.put("applicationCacheEnabled", true);
-//        options.setExperimentalOption("prefs", prefs);
-//        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-//        driver = new ChromeDriver(capabilities);
-//        driver.manage().timeouts().pageLoadTimeout(75, TimeUnit.SECONDS);
-//        driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
-//        driver.manage().window().maximize();
-//    }
 
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
@@ -50,7 +29,7 @@ public class Tests {
                 .selectTime()
                 .selectFilm();
         int i = filmsPage.allShots();
-        Assert.assertEquals(i, 4, "There are four shots to this film");
+        Assert.assertEquals(i, 5, "There are four shots to this film");
     }
 
     @Test(description = "Финансы.tut.by", priority = 1)

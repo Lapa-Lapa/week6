@@ -20,27 +20,35 @@ public class FinancePage extends AbstractPage {
 
     public FinancePage pressChoseCreditButton() {
         driver.findElement(choseCreditButton).click();
-        return new FinancePage();    }
+        return new FinancePage();
+    }
 
-    public FinancePage setBelarusBankAsOptionForCredit(){
-        String window = driver.getWindowHandle();
-        driver.switchTo().window(window);
+    public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
         waitForElementVisible(popUpWindowClose);
         driver.findElement(popUpWindowClose).click();
-        String window2 = driver.getWindowHandle();
-        driver.switchTo().window(window2);
+        for(int i =0;i<1000;i++){
+            if(isElementPresent(popUpWindowClose)==true){
+                System.out.println("Pop-up still not disappear");
+                Thread.sleep(1500);
+            } else{
+                break;
+            }
+        }
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         bank.selectByIndex(8);
-        return new FinancePage();}
+        return new FinancePage();
+    }
 
     public FinancePage setSumOfCredit() {
         driver.findElement(sumOfCreditField).sendKeys("3000");
         return new FinancePage();
     }
 
-    public FinancePage getResults(){
+    public FinancePage getResults() {
         waitForElementVisible(tableWithResults);
         driver.findElement(submitButton).click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
