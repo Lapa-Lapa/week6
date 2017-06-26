@@ -26,11 +26,11 @@ public class FinancePage extends AbstractPage {
     public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
         waitForElementVisible(popUpWindowClose);
         driver.findElement(popUpWindowClose).click();
-        for(int i =0;i<1000;i++){
-            if(isElementPresent(popUpWindowClose)==true){
+        for (int i = 0; i < 1000; i++) {
+            if (isElementPresent(popUpWindowClose)) {
                 System.out.println("Pop-up still not disappear");
                 Thread.sleep(1500);
-            } else{
+            } else {
                 break;
             }
         }

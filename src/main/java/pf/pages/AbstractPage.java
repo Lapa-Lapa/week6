@@ -3,8 +3,6 @@ package pf.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,6 +20,10 @@ public class AbstractPage {
         return !driver.findElements(locator).isEmpty();
     }
 
+    protected boolean isElementVisible(By locator) {
+        return driver.findElement(locator).isDisplayed();
+    }
+
     protected void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
@@ -30,7 +32,7 @@ public class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
-    protected void waitForElementEnabled(By locator) {
+    protected void waitForElementClicable(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -42,10 +44,10 @@ public class AbstractPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
     }
 
-    private ExpectedCondition<Boolean> isAjaxFinished (){
+    private ExpectedCondition<Boolean> isAjaxFinished() {
         return new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
-                return(Boolean)((JavascriptExecutor)driver).executeScript("return jQuery.active == 0");
+                return (Boolean) ((JavascriptExecutor) driver).executeScript("return jQuery.active == 0");
             }
         };
     }

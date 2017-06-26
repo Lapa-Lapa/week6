@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FilmsPage extends AbstractPage {
 
-    private static final int TIME = 15;
+    private static final int TIME = 20;
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
     private static final By date9Jule = By.xpath("//a[@title='воскресенье, 9 июля']");
@@ -38,62 +38,35 @@ public class FilmsPage extends AbstractPage {
     }
 
     public FilmsPage popupWindowClose() throws InterruptedException {
-        Thread.sleep(15000);
-        waitForElementVisible(popupFrame);
+        Thread.sleep(3000);
         driver.switchTo().frame(driver.findElement(popupFrame));
+        waitForElementClicable(popupWindowCloseButton);
         driver.findElement(popupWindowCloseButton).click();
-        for (int i = 0; i < 1000; i++) {
-            if (isElementPresent(popupWindowCloseButton) == true) {
-                System.out.println("Pop-up still not disappear");
-                Thread.sleep(1500);
-                String window = driver.getWindowHandle();
-                driver.switchTo().window(window);
-            } else {
-                break;
-            }
-        }
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
         return new FilmsPage();
     }
 
-    public FilmsPage selectTime() {
+    public FilmsPage selectTime() throws InterruptedException {
+        driver.navigate().refresh();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(defaultTimeStartPosition));
-        waitForElementVisible(defaultTimeStartPosition);
+        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(filmTransformers));
         Actions actions = new Actions(driver);
-        if (TIME == 10) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(45, 0).click().release().perform();
+        if (TIME <= 17) {
+            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47)), 0).click().release().perform();
         }
-        if (TIME == 11) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(85, 0).click().release().perform();
-        }
-        if (TIME == 12) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(130, 0).click().release().perform();
-        }
-        if (TIME == 13) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(175, 0).click().release().perform();
-        }
-        if (TIME == 14) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(215, 0).click().release().perform();
-        }
-        if (TIME == 15) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(260, 0).click().release().perform();
-        }
-        if (TIME == 17) {
+        if (TIME >= 20) {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(385, 0).click().release().perform();
+            Thread.sleep(1000);
+            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47.5) - 385), 0).click().release().perform();
         }
-        if (TIME == 20) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(385, 0).click().release().perform();
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(130, 0).click().release().perform();
-        }
-        if (TIME == 21) {
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(385, 0).click().release().perform();
-            actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(175, 0).click().release().perform();
-        }
+        Thread.sleep(1000);
         return new FilmsPage();
     }
 
     public FilmsPage selectFilm() throws InterruptedException {
-        waitForElementVisible(filmTransformers);
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(FILMS));
         driver.findElement(filmTransformers).click();
         return new FilmsPage();
     }
