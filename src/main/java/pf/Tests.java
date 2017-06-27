@@ -75,7 +75,7 @@ public class Tests {
                 .postOpen()
                 .videoPlayButtonPressAndFullSize();
                Boolean res= autoPage.getResultOfScalingToFullScreen();
-               Assert.assertTrue(res==true);
+               Assert.assertTrue(res==false);
     }
 
     @AfterClass(description = "close browser")

@@ -26,7 +26,6 @@ public class AbstractPage {
     }
 
     protected boolean isElementVisible(By locator) { return driver.findElement(locator).isDisplayed();}
-    //protected boolean isElementVisible(By locator) { return driver.findElement(locator).();}
 
     protected void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(locator));

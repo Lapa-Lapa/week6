@@ -11,7 +11,7 @@ public class AutoPage extends AbstractPage {
     private static final By playButton = By.className("dmp_StartView-play-icon");
     private static final By makeButtonsVisible = By.id("dmp_Video");
     private static final By fullscreenButton = By.xpath("//button[@class='dmp_FullscreenButton dmp_ControlBarButton']");
-    private static final By fullScreenIndicator = By.xpath("//div[@class='dmp_Player dmp_h-min-xs dmp_h-min-s dmp_h-min-m dmp_h-min-l dmp_h-min-xl dmp_v-min-xs dmp_v-min-s dmp_v-min-m dmp_v-min-l dmp_v-min-xl dmp_fat'");
+    private static final By VKButton = By.xpath("//p/[contains(text(),'Транспортное средство без водителя сняли на видео очевидцы')]");
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
@@ -40,6 +40,11 @@ public class AutoPage extends AbstractPage {
     }
 
     public boolean getResultOfScalingToFullScreen() {
-        return Boolean.parseBoolean(String.valueOf(isElementPresent(fullScreenIndicator)));
+//        try {
+//            Thread.sleep(3000000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        return Boolean.parseBoolean(String.valueOf(isElementVisible(VKButton)));
     }
 }

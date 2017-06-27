@@ -24,7 +24,7 @@ public class FinancePage extends AbstractPage {
     }
 
     public FinancePage setBelarusBankAsOptionForCredit() {
-        if (isElementClicable(popUpWindowClose)) {
+        if (isElementVisible(popUpWindowClose)) {
             driver.findElement(popUpWindowClose).click();
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);

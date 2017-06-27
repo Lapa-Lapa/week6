@@ -40,9 +40,10 @@ public class HomePage extends AbstractPage {
     }
 
     public HomePage mobileVersionEnable() {
-        do {
+        int i=0;
+        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK)&&i<30){
             driver.findElement(PAGE).sendKeys(Keys.SPACE);
-        } while (isElementVisible(MOBILE_MORE_SECTIONS));
+        }
         //JavascriptExecutor jse = (JavascriptExecutor) driver;
         //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
         highlightElement(MOBILE_VERSION_ENABLE_LINK);

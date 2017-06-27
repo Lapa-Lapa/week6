@@ -25,15 +25,11 @@ public class FilmsPage extends AbstractPage {
     }
 
     public FilmsPage selectDate() {
-        for (int i = 0; i < 10; i++) {
-            try {
-                waitForElementVisible(date9Jule);
-                driver.findElement(date9Jule).click();
-                break;
-            } catch (Exception exception) {
-                driver.findElement(arrowRightAvailableDates).click();
-            }
+        int i = 30;
+        while (!isElementVisible(date9Jule) && i < 30) {
+            driver.findElement(arrowRightAvailableDates).click();
         }
+        driver.findElement(date9Jule).click();
         return new FilmsPage();
     }
 
