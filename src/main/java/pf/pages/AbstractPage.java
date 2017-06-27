@@ -17,20 +17,25 @@ public class AbstractPage {
     }
 
     protected boolean isElementPresent(By locator) {
+        waitForElementPresent(locator);
+        return !driver.findElements(locator).isEmpty();
+    }
+    protected boolean isElementClicable(By locator) {
+        waitForElementClicable(locator);
         return !driver.findElements(locator).isEmpty();
     }
 
-    protected boolean isElementVisible(By locator) {
-        return driver.findElement(locator).isDisplayed();
-    }
+    protected boolean isElementVisible(By locator) { return driver.findElement(locator).isDisplayed();}
+    //protected boolean isElementVisible(By locator) { return driver.findElement(locator).();}
 
     protected void waitForElementPresent(By locator) {
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(locator));
+    }//made better?
 
     protected void waitForElementVisible(By locator) {
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
-    }
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }//don't touch! 24 slide of
+    //https://www.slideshare.net/ssuser220b38/java-explicit-and-implicit-wait-testing-ajax-applications
 
     protected void waitForElementClicable(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));

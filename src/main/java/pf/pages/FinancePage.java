@@ -23,23 +23,22 @@ public class FinancePage extends AbstractPage {
         return new FinancePage();
     }
 
-    public FinancePage setBelarusBankAsOptionForCredit() throws InterruptedException {
-        waitForElementVisible(popUpWindowClose);
-        driver.findElement(popUpWindowClose).click();
-        for (int i = 0; i < 1000; i++) {
-            if (isElementPresent(popUpWindowClose)) {
-                System.out.println("Pop-up still not disappear");
+    public FinancePage setBelarusBankAsOptionForCredit() {
+        if (isElementClicable(popUpWindowClose)) {
+            driver.findElement(popUpWindowClose).click();
+            String window = driver.getWindowHandle();
+            driver.switchTo().window(window);
+            try {
                 Thread.sleep(1500);
-            } else {
-                break;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        String window = driver.getWindowHandle();
-        driver.switchTo().window(window);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
-        bank.selectByIndex(8);
+        //bank.selectByIndex(8);
+        bank.selectByVisibleText("Беларусбанк");
         return new FinancePage();
     }
 
@@ -48,7 +47,7 @@ public class FinancePage extends AbstractPage {
         return new FinancePage();
     }
 
-    public FinancePage getResults() {
+    public Double getResults() {
         waitForElementVisible(tableWithResults);
         driver.findElement(submitButton).click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
@@ -58,10 +57,10 @@ public class FinancePage extends AbstractPage {
         driver.findElement(sortByRateItem).click();//Desending
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
         String results = driver.findElement(thehighestRate).getText();
-        double res = Double.parseDouble(results.substring(0, 2));
-        if (res > 15) {
-            System.out.println("Есть ставка более 15% и это:" + results);
-        } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
-        return new FinancePage();
+//        double res = Double.parseDouble(results.substring(0, 2));
+//        if (res > 15) {
+//            System.out.println("Есть ставка более 15% и это:" + results);
+//        } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
+        return Double.parseDouble(results.substring(0, 2));
     }
 }
