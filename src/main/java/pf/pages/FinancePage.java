@@ -1,5 +1,6 @@
 package pf.pages;
 
+import com.google.common.primitives.Chars;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -23,17 +24,19 @@ public class FinancePage extends AbstractPage {
         return new FinancePage();
     }
 
-    public FinancePage setBelarusBankAsOptionForCredit() {
-        if (isElementVisible(popUpWindowClose)) {
+    public FinancePage popupWindowClose() {
+        waitForElementVisible(popUpWindowClose);
+        if (isElementPresent(popUpWindowClose)) {
+            waitForElementClicable(popUpWindowClose);
             driver.findElement(popUpWindowClose).click();
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
-            try {
-                Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+        return new FinancePage();
+    }
+
+    public FinancePage setBelarusBankAsOptionForCredit() {
+        waitForElementClicable(additionalOptionsForCredit);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
@@ -42,8 +45,8 @@ public class FinancePage extends AbstractPage {
         return new FinancePage();
     }
 
-    public FinancePage setSumOfCredit() {
-        driver.findElement(sumOfCreditField).sendKeys("3000");
+    public FinancePage setSumOfCredit(int SUM_OF_CREDIT) {
+        driver.findElement(sumOfCreditField).sendKeys(String.valueOf(SUM_OF_CREDIT));
         return new FinancePage();
     }
 

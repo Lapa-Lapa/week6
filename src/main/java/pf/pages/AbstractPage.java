@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pf.utils.WebDriverSingleton;
 
 public class AbstractPage {
-    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
+    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 75;
     protected WebDriver driver;
 
     protected AbstractPage() {
@@ -17,15 +17,17 @@ public class AbstractPage {
     }
 
     protected boolean isElementPresent(By locator) {
-        waitForElementPresent(locator);
-        return !driver.findElements(locator).isEmpty();
-    }
-    protected boolean isElementClicable(By locator) {
-        waitForElementClicable(locator);
         return !driver.findElements(locator).isEmpty();
     }
 
-    protected boolean isElementVisible(By locator) { return driver.findElement(locator).isDisplayed();}
+    protected boolean isElementClicable(By locator) {
+        waitForElementClicable(locator);
+        return !driver.findElement(locator).isEmpty();
+    }
+
+    protected boolean isElementVisible(By locator) {
+        return driver.findElement(locator).isDisplayed();
+    }
 
     protected void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -35,6 +37,7 @@ public class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }//don't touch! 24 slide of
     //https://www.slideshare.net/ssuser220b38/java-explicit-and-implicit-wait-testing-ajax-applications
+    //https://stackoverflow.com/questions/11736027/webdriver-wait-for-element-using-java here also recomended
 
     protected void waitForElementClicable(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
@@ -42,6 +45,14 @@ public class AbstractPage {
 
     protected void highlightElement(By locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", driver.findElement(locator));
+    }
+
+    protected void highlightUnhighlightClickElement(By locator) {
+        waitForElementVisible(locator);
+        waitForElementClicable(locator);
+        highlightElement(locator);
+        unHighlightElement(locator);
+        driver.findElement(locator).click();
     }
 
     protected void unHighlightElement(By locator) {

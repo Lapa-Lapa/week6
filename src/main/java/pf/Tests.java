@@ -1,6 +1,5 @@
 package pf;
 
-import org.apache.xpath.operations.Bool;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Parameters;
@@ -44,15 +43,17 @@ public class Tests {
      4) Сумма кредита 3000
      5) Убедиться, что есть хоть один кредит со ставкой > 15%*/
     public void financeTutByTest() {
+        final int SUM_OF_CREDIT = 3000;
         HomePage homePage = new HomePage()
                 .open()
                 .financeOpen();
         FinancePage financePage = new FinancePage()
                 .pressChoseCreditButton()
+                .popupWindowClose()
                 .setBelarusBankAsOptionForCredit()
-                .setSumOfCredit();
+                .setSumOfCredit(SUM_OF_CREDIT);
         Double res = financePage.getResults();
-        Assert.assertTrue(res > 15);
+        Assert.assertTrue(res > 15, "Кредиты со ставкой больше 15% есть");
     }
 
     @Test(description = "Auto.tut.by", priority = 2)
@@ -74,8 +75,7 @@ public class Tests {
                 .videoSectionOpen()
                 .postOpen()
                 .videoPlayButtonPressAndFullSize();
-               Boolean res= autoPage.getResultOfScalingToFullScreen();
-               Assert.assertTrue(res==false);
+        Assert.assertFalse(autoPage.getResultOfScalingToFullScreen());
     }
 
     @AfterClass(description = "close browser")

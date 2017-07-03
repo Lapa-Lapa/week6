@@ -31,7 +31,9 @@ public class AutoPage extends AbstractPage {
             driver.findElement(playButton).click();
             Thread.sleep(20000);//Это по условию!!! Не убирать!
             driver.findElement(makeButtonsVisible).click();
+            Thread.sleep(500);
             waitForElementVisible(fullscreenButton);
+            waitForElementClicable(fullscreenButton);
             driver.findElement(fullscreenButton).click();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -40,11 +42,11 @@ public class AutoPage extends AbstractPage {
     }
 
     public boolean getResultOfScalingToFullScreen() {
-//        try {
-//            Thread.sleep(3000000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        return Boolean.parseBoolean(String.valueOf(isElementVisible(VKButton)));
+        try {
+            Thread.sleep(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return isElementVisible(fullscreenButton);
     }
 }

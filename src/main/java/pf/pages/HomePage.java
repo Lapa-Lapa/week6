@@ -1,5 +1,6 @@
 package pf.pages;
 
+import com.gargoylesoftware.htmlunit.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -23,55 +24,40 @@ public class HomePage extends AbstractPage {
     }
 
     public HomePage afishaOpen() {
-        highlightElement(AFISHA);
-        driver.findElement(AFISHA).click();
-        unHighlightElement(AFISHA);
+        highlightUnhighlightClickElement(AFISHA);
         return new HomePage();
     }
 
     public HomePage financeOpen() {
-        highlightElement(SECTION);
-        unHighlightElement(SECTION);
-        driver.findElement(SECTION).click();
-        highlightElement(FINANCE);
-        unHighlightElement(FINANCE);
-        driver.findElement(FINANCE).click();
+        highlightUnhighlightClickElement(SECTION);
+        highlightUnhighlightClickElement(FINANCE);
         return new HomePage();
     }
 
     public HomePage mobileVersionEnable() {
-        int i=0;
-        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK)&&i<30){
+        int i = 0;
+        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK) && i < 30) {
             driver.findElement(PAGE).sendKeys(Keys.SPACE);
+            i++;
         }
         //JavascriptExecutor jse = (JavascriptExecutor) driver;
         //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
-        highlightElement(MOBILE_VERSION_ENABLE_LINK);
-        unHighlightElement(MOBILE_VERSION_ENABLE_LINK);
-        driver.findElement(MOBILE_VERSION_ENABLE_LINK).click();
+        highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK);
         return new HomePage();
     }
 
     public HomePage autoOpen() {
-        highlightElement(POPUP_FRAME);
-        driver.switchTo().frame(driver.findElement(POPUP_FRAME));
-        waitForElementVisible(POPUP_WINDOW_CLOSE_BUTTON);
-        highlightElement(POPUP_WINDOW_CLOSE_BUTTON);
-        driver.findElement(POPUP_WINDOW_CLOSE_BUTTON).click();
-        unHighlightElement(POPUP_WINDOW_CLOSE_BUTTON);
-        String window = driver.getWindowHandle();
-        driver.switchTo().window(window);
-        waitForElementVisible(MOBILE_SECTION);
-        highlightElement(MOBILE_SECTION);
-        driver.findElement(MOBILE_SECTION).click();
-        unHighlightElement(MOBILE_SECTION);
-        waitForElementVisible(MOBILE_MORE_SECTIONS);
-        highlightElement(MOBILE_MORE_SECTIONS);
-        driver.findElement(MOBILE_MORE_SECTIONS).click();
-        unHighlightElement(MOBILE_MORE_SECTIONS);
-        waitForElementVisible(AUTO);
-        highlightElement(AUTO);
-        driver.findElement(AUTO).click();
+        try {
+            Thread.sleep(2000);
+            driver.switchTo().frame(driver.findElement(POPUP_FRAME));
+            highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON);
+            String window = driver.getWindowHandle();
+            driver.switchTo().window(window);
+                } catch (Exception e) {
+        }
+        highlightUnhighlightClickElement(MOBILE_SECTION);
+        highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS);
+        highlightUnhighlightClickElement(AUTO);
         return new HomePage();
     }
 }

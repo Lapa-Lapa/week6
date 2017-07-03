@@ -25,22 +25,23 @@ public class FilmsPage extends AbstractPage {
     }
 
     public FilmsPage selectDate() {
-        int i = 30;
+        int i = 0;
         while (!isElementVisible(date9Jule) && i < 30) {
             driver.findElement(arrowRightAvailableDates).click();
+            i++;
         }
         driver.findElement(date9Jule).click();
         return new FilmsPage();
     }
 
     public FilmsPage popupWindowClose() {
+        waitForElementVisible(popupFrame);
         if (isElementPresent(popupFrame)) {
             driver.switchTo().frame(driver.findElement(popupFrame));
             waitForElementClicable(popupWindowCloseButton);
             driver.findElement(popupWindowCloseButton).click();
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
-        } else {
         }
         return new FilmsPage();
     }
@@ -78,8 +79,6 @@ public class FilmsPage extends AbstractPage {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(areaForShots));
         waitForElementVisible(areaForShots);
-        final List<WebElement> pictures = driver.findElements(anyPicture);
-        int i = pictures.size();
-        return i;
+        return driver.findElements(anyPicture).size();
     }
 }
