@@ -3,6 +3,8 @@ package pf.pages;
 import com.gargoylesoftware.htmlunit.Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends AbstractPage {
 
@@ -37,7 +39,9 @@ public class HomePage extends AbstractPage {
     public HomePage mobileVersionEnable() {
         int i = 0;
         while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK) && i < 30) {
-            driver.findElement(PAGE).sendKeys(Keys.SPACE);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(" ");
+            //driver.findElement(PAGE).sendKeys(Keys.SPACE);
             i++;
         }
         //JavascriptExecutor jse = (JavascriptExecutor) driver;

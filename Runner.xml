@@ -1,11 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Tests" thread-count="2"
-       configfailurepolicy="continue">
-    <test name="Films">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="pf.Tests"/>
-        </classes>
-    </test>
-</suite>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>JSON</title>
+    </head>
+    <body>
+        <script>
+            var info =
+            {"SUM_OF_CREDIT": "3000",
+            "BANK": "Беларусбанк"}
+        </script>
+    </body>
+</html>

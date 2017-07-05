@@ -1,6 +1,5 @@
 package pf.pages;
 
-import com.google.common.primitives.Chars;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -35,13 +34,18 @@ public class FinancePage extends AbstractPage {
         return new FinancePage();
     }
 
-    public FinancePage setBelarusBankAsOptionForCredit() {
-        waitForElementClicable(additionalOptionsForCredit);
+    public FinancePage setBankAsOptionForCredit(String BANK) {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitForElementVisible(additionalOptionsForCredit);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         //bank.selectByIndex(8);
-        bank.selectByVisibleText("Беларусбанк");
+        bank.selectByVisibleText(BANK);
         return new FinancePage();
     }
 

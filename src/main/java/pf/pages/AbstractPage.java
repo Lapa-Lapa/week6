@@ -20,11 +20,6 @@ public class AbstractPage {
         return !driver.findElements(locator).isEmpty();
     }
 
-    protected boolean isElementClicable(By locator) {
-        waitForElementClicable(locator);
-        return !driver.findElement(locator).isEmpty();
-    }
-
     protected boolean isElementVisible(By locator) {
         return driver.findElement(locator).isDisplayed();
     }

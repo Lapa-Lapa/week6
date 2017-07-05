@@ -6,12 +6,11 @@ public class AutoPage extends AbstractPage {
 
     private static final By videoSection = By.xpath("//h3/a[contains(text(),'Видео')]");
     private static final By post = By.xpath("//span[@class='entry-head _title'][contains(text(),'Видеофакт. Во Франции мотоцикл без водителя проехал несколько километров')]");
-    //private static final By post = By.xpath("//a[@class='entry__link'][@href='https://auto.tut.by/news/video/547151.html']");
     private static final By frame = By.xpath("//*[@id='article_body']/p[3]/iframe");
     private static final By playButton = By.className("dmp_StartView-play-icon");
     private static final By makeButtonsVisible = By.id("dmp_Video");
     private static final By fullscreenButton = By.xpath("//button[@class='dmp_FullscreenButton dmp_ControlBarButton']");
-    private static final By VKButton = By.xpath("//p/[contains(text(),'Транспортное средство без водителя сняли на видео очевидцы')]");
+    private static final By header = By.xpath("//h1[contains(text(),'Видеофакт. Во Франции мотоцикл без водителя проехал несколько километров')]");
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
@@ -32,7 +31,6 @@ public class AutoPage extends AbstractPage {
             Thread.sleep(20000);//Это по условию!!! Не убирать!
             driver.findElement(makeButtonsVisible).click();
             Thread.sleep(500);
-            waitForElementVisible(fullscreenButton);
             waitForElementClicable(fullscreenButton);
             driver.findElement(fullscreenButton).click();
         } catch (InterruptedException e) {
@@ -42,11 +40,8 @@ public class AutoPage extends AbstractPage {
     }
 
     public boolean getResultOfScalingToFullScreen() {
-        try {
-            Thread.sleep(50000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return isElementVisible(fullscreenButton);
-    }
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
+        return isElementVisible(header);// Игорь!))Почему оно его видит если fullscreen и он не виден?
+    }//А если не переключаться на window, то падает тест! :(
 }
