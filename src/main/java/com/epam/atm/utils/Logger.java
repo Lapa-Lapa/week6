@@ -1,8 +1,18 @@
-package pf.utils;
-import  org.slf4j.LoggerFactory;
+package com.epam.atm.utils;
+
+import com.epam.atm.pages.HomePage;
+import org.slf4j.LoggerFactory;
 
 public class Logger {
+    private static HomePage logic;
+
+    public static void main(String[] args) {
+        logic = new HomePage();
+        logic.open();
+    }
+
     public static org.slf4j.Logger logger = LoggerFactory.getLogger(Logger.class);
+
     public static void error(String message) {
         logger.error(message);
     }

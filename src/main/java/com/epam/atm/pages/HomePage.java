@@ -1,17 +1,16 @@
-package pf.pages;
+package com.epam.atm.pages;
 
-import com.gargoylesoftware.htmlunit.Page;
+import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
-public class HomePage extends AbstractPage {
+import static com.epam.atm.waiters.ThreadSleep.waitElement;
+
+public class HomePage extends SmartWaiters {
 
     private static final String URL = "https://www.tut.by";
     private static final By AFISHA = By.xpath("//a[contains(text(),'Афиша')]");
     private static final By SECTION = By.xpath("//a[contains(text(),'Разделы')]");
-    private static final By PAGE = By.xpath("/html/body");
     private static final By MOBILE_VERSION_ENABLE_LINK = By.xpath("//a[contains(text(),'Версия для смартфонов')]");
     private static final By POPUP_FRAME = By.xpath("//iframe[contains(@sandbox,'allow-top-navigation')]");
     private static final By FINANCE = By.xpath("//ul[@class='b-topbar-more-list']/li[4]");
@@ -22,17 +21,20 @@ public class HomePage extends AbstractPage {
 
     public HomePage open() {
         driver.get(URL);
+        System.out.println("Home page is open");
         return this;
     }
 
     public HomePage afishaOpen() {
         highlightUnhighlightClickElement(AFISHA);
+        System.out.println("Afisha page is open");
         return new HomePage();
     }
 
     public HomePage financeOpen() {
         highlightUnhighlightClickElement(SECTION);
         highlightUnhighlightClickElement(FINANCE);
+        System.out.println("Finance page is open");
         return new HomePage();
     }
 
@@ -47,21 +49,20 @@ public class HomePage extends AbstractPage {
         //JavascriptExecutor jse = (JavascriptExecutor) driver;
         //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
         highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK);
+        System.out.println("Mobile version enabled");
         return new HomePage();
     }
 
     public HomePage autoOpen() {
-        try {
-            Thread.sleep(2000);
-            driver.switchTo().frame(driver.findElement(POPUP_FRAME));
-            highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON);
-            String window = driver.getWindowHandle();
-            driver.switchTo().window(window);
-                } catch (Exception e) {
-        }
+        waitElement(2000);
+        driver.switchTo().frame(driver.findElement(POPUP_FRAME));
+        highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON);
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
         highlightUnhighlightClickElement(MOBILE_SECTION);
         highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS);
         highlightUnhighlightClickElement(AUTO);
+        System.out.println("Auto page is open");
         return new HomePage();
     }
 }

@@ -1,11 +1,14 @@
-package pf.pages;
+package com.epam.atm.pages;
 
+import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class FinancePage extends AbstractPage {
+import static com.epam.atm.waiters.ThreadSleep.waitElement;
+
+public class FinancePage extends SmartWaiters {
 
     private static final By choseCreditButton = By.xpath("//a[@class='button flat-white']");
     private static final By popUpWindowClose = By.className("scrollable-close");
@@ -20,6 +23,7 @@ public class FinancePage extends AbstractPage {
 
     public FinancePage pressChoseCreditButton() {
         driver.findElement(choseCreditButton).click();
+        System.out.println("Credits page is open");
         return new FinancePage();
     }
 
@@ -30,27 +34,26 @@ public class FinancePage extends AbstractPage {
             driver.findElement(popUpWindowClose).click();
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
+            System.out.println("Pop-up window closed");
         }
         return new FinancePage();
     }
 
     public FinancePage setBankAsOptionForCredit(String BANK) {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitElement(500);
         waitForElementVisible(additionalOptionsForCredit);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         //bank.selectByIndex(8);
         bank.selectByVisibleText(BANK);
+        System.out.println("Bank is selected");
         return new FinancePage();
     }
 
     public FinancePage setSumOfCredit(int SUM_OF_CREDIT) {
         driver.findElement(sumOfCreditField).sendKeys(String.valueOf(SUM_OF_CREDIT));
+        System.out.println("Summ of credit is set");
         return new FinancePage();
     }
 
@@ -68,6 +71,7 @@ public class FinancePage extends AbstractPage {
 //        if (res > 15) {
 //            System.out.println("Есть ставка более 15% и это:" + results);
 //        } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
+        System.out.println("Results of test were collected");
         return Double.parseDouble(results.substring(0, 2));
     }
 }

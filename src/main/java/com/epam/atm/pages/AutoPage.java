@@ -1,8 +1,14 @@
-package pf.pages;
+package com.epam.atm.pages;
 
+import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-public class AutoPage extends AbstractPage {
+import java.awt.*;
+
+import static com.epam.atm.waiters.ThreadSleep.waitElement;
+
+public class AutoPage extends SmartWaiters {
 
     private static final By videoSection = By.xpath("//h3/a[contains(text(),'Видео')]");
     private static final By post = By.xpath("//span[@class='entry-head _title'][contains(text(),'Видеофакт. Во Франции мотоцикл без водителя проехал несколько километров')]");
@@ -14,34 +20,46 @@ public class AutoPage extends AbstractPage {
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
+        System.out.println("Section video is open");
         return new AutoPage();
     }
 
     public AutoPage postOpen() {
         driver.findElement(post).click();
+        System.out.println("Post is open");
         return new AutoPage();
     }
 
     public AutoPage videoPlayButtonPressAndFullSize() {
-        try {
-            driver.findElement(frame);
-            driver.switchTo().frame(driver.findElement(frame));
-            waitForElementVisible(playButton);
-            driver.findElement(playButton).click();
-            Thread.sleep(20000);//Это по условию!!! Не убирать!
-            driver.findElement(makeButtonsVisible).click();
-            Thread.sleep(500);
-            waitForElementClicable(fullscreenButton);
-            driver.findElement(fullscreenButton).click();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        driver.findElement(frame);
+        driver.switchTo().frame(driver.findElement(frame));
+        waitForElementVisible(playButton);
+        driver.findElement(playButton).click();
+        waitElement(20000);
+        driver.findElement(makeButtonsVisible).click();
+        waitElement(500);
+        waitForElementClicable(fullscreenButton);
+        driver.findElement(fullscreenButton).click();
+        System.out.println("Video start");
         return new AutoPage();
     }
 
     public boolean getResultOfScalingToFullScreen() {
+        waitElement(1000);
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        return isElementVisible(header);// Игорь!))Почему оно его видит если fullscreen и он не виден?
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        WebElement frame = driver.findElement(By.xpath("//*[@id='article_body']/p[3]/iframe"));
+        int frameheight = frame.getSize().getHeight();
+        System.out.println(frameheight);
+        System.out.println(height);
+        boolean result = false;
+        if(frameheight >= (0.9*height)){
+            result=true;
+        }
+        System.out.println("Results of test were collected");
+        return result;// Игорь!))Почему оно его видит если fullscreen и он не виден?
     }//А если не переключаться на window, то падает тест! :(
 }

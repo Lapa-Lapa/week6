@@ -1,18 +1,18 @@
-package pf.pages;
+package com.epam.atm.waiters;
 
+import com.epam.atm.driver.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pf.utils.WebDriverSingleton;
 
-public class AbstractPage {
+public class SmartWaiters {
     private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 75;
     protected WebDriver driver;
 
-    protected AbstractPage() {
+    protected SmartWaiters() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
     }
 
