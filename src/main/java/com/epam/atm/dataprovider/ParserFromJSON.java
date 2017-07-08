@@ -1,20 +1,31 @@
 package com.epam.atm.dataprovider;
 
 import com.epam.atm.dataprovider.BankData;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 
+import com.google.gson.reflect.TypeToken;
+import org.json.JSONObject;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ParserFromJSON {
     private static final String FILE_NAME = "BankData.json";
     private static final String FILE_PATH = "src\\main\\resources\\" + FILE_NAME;
     private static String BANKDATA = "";
-//http://www.javacreed.com/simple-gson-example/
+    //private static JsonObject object;
+    //private static JsonArray array;
+    private static BankData list[];
+    Type itemsArrType = new TypeToken<BankData[]>() {
+    }.getType();
+    //private static JsonParser parser;
 
-    public BankData crateTestData() {
-        BankData bankData = new BankData();
+    public BankData[] crateTestData() {
         try {
             Scanner scanner = new Scanner(new FileReader(FILE_PATH));
             while (scanner.hasNext()) {
@@ -23,11 +34,8 @@ public class ParserFromJSON {
         } catch (Exception exception) {
             System.out.println("File is not found or it's content can not be read");
         }
-        System.out.println(BANKDATA);
-        Gson gson = new GsonBuilder().create();
-        bankData = gson.fromJson(BANKDATA, BankData.class);
-        System.out.println(bankData.getBANK());
-        System.out.println(bankData.getSUM_OF_CREDIT());
-        return bankData;
+        list = new Gson().fromJson(BANKDATA, itemsArrType);
+        System.out.println(list[0].getBANK());
+        return list;
     }
 }

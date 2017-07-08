@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.SwitchTo;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -39,7 +40,8 @@ public class FilmsPage extends SmartWaiters {
     public FilmsPage popupWindowClose() {
         waitForElementVisible(popupFrame);
         if (isElementPresent(popupFrame)) {
-            driver.switchTo().frame(driver.findElement(popupFrame));
+            SwitchTo.switchToFrame(driver,popupFrame);
+           // driver.switchTo().frame(driver.findElement(popupFrame));
             waitForElementClicable(popupWindowCloseButton);
             driver.findElement(popupWindowCloseButton).click();
             String window = driver.getWindowHandle();

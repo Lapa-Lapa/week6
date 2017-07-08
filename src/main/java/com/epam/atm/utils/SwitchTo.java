@@ -2,14 +2,16 @@ package com.epam.atm.utils;
 
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-public class SwitchTo extends SmartWaiters {
+public class SwitchTo {
 
-    private void switchToFrame(By locator) {
+    public static void switchToFrame(WebDriver driver, By locator) {
+
         driver.switchTo().frame(driver.findElement(locator));
     }
 
     public void switchToWindow(By locator) {
-        driver.switchTo().frame(driver.findElement(locator));
+     //   driver.switchTo().frame(driver.findElement(locator));
     }
 }
