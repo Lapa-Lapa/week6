@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.SwitchTo;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -31,8 +32,8 @@ public class AutoPage extends SmartWaiters {
     }
 
     public AutoPage videoPlayButtonPressAndFullSize() {
-        driver.findElement(frame);
-        driver.switchTo().frame(driver.findElement(frame));
+
+        SwitchTo.switchToFrame(driver,frame);
         waitForElementVisible(playButton);
         driver.findElement(playButton).click();
         waitElement(20000);

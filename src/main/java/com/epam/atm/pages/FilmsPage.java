@@ -12,11 +12,12 @@ public class FilmsPage extends SmartWaiters {
 
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
-    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 16 июля']");
+    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 23 июля']");
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
-    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+    //private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+    private static final By filmTransformers = By.xpath("//span[contains(text(),'Гадкий я 3')]");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
 
@@ -38,15 +39,14 @@ public class FilmsPage extends SmartWaiters {
     }
 
     public FilmsPage popupWindowClose() {
-        waitForElementVisible(popupFrame);
+        try{waitForElementVisible(popupFrame);
         if (isElementPresent(popupFrame)) {
-            SwitchTo.switchToFrame(driver,popupFrame);
-           // driver.switchTo().frame(driver.findElement(popupFrame));
-            waitForElementClicable(popupWindowCloseButton);
-            driver.findElement(popupWindowCloseButton).click();
+            SwitchTo.switchToFrameAndClose(driver, popupFrame, popupWindowCloseButton);
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
             System.out.println("Pop up window closed");
+        }}catch (Exception exception){
+            System.out.println("Pop up window do not appear");
         }
         return new FilmsPage();
     }
@@ -64,7 +64,7 @@ public class FilmsPage extends SmartWaiters {
             waitElement(900);
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47.5) - 385), 0).click().release().perform();
         }
-        waitElement(900);
+        waitElement(1500);
         System.out.println("Time is selected");
         return new FilmsPage();
     }

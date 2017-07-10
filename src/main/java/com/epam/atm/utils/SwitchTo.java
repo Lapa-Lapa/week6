@@ -1,17 +1,22 @@
 package com.epam.atm.utils;
 
-import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SwitchTo {
+    public static void switchToFrame(WebDriver driver, By frame) {
+        driver.switchTo().frame(driver.findElement(frame));
+    }
 
-    public static void switchToFrame(WebDriver driver, By locator) {
-
-        driver.switchTo().frame(driver.findElement(locator));
+    public static void switchToFrameAndClose(WebDriver driver, By frame, By closeButton) {
+        driver.switchTo().frame(driver.findElement(frame));
+        driver.findElement(closeButton).click();
+        String window = driver.getWindowHandle();
+        driver.switchTo().window(window);
+        System.out.println("Pop up window closed");
     }
 
     public void switchToWindow(By locator) {
-     //   driver.switchTo().frame(driver.findElement(locator));
+        //   driver.switchTo().frame(driver.findElement(locator));
     }
 }

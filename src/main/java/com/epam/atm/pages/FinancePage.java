@@ -28,13 +28,15 @@ public class FinancePage extends SmartWaiters {
     }
 
     public FinancePage popupWindowClose() {
-        waitForElementVisible(popUpWindowClose);
+        try{waitForElementVisible(popUpWindowClose);
         if (isElementPresent(popUpWindowClose)) {
             waitForElementClicable(popUpWindowClose);
             driver.findElement(popUpWindowClose).click();
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
             System.out.println("Pop-up window closed");
+        }}catch(Exception exception){
+            System.out.println("Pop-up window not appear");
         }
         return new FinancePage();
     }
