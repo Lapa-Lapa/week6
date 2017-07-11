@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SmartWaiters {
-    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 75;
+    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 25;
     protected WebDriver driver;
 
     protected SmartWaiters() {
@@ -26,13 +26,11 @@ public class SmartWaiters {
 
     protected void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(locator));
-    }//made better?
+    }
 
     protected void waitForElementVisible(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }//don't touch! 24 slide of
-    //https://www.slideshare.net/ssuser220b38/java-explicit-and-implicit-wait-testing-ajax-applications
-    //https://stackoverflow.com/questions/11736027/webdriver-wait-for-element-using-java here also recomended
+    }
 
     protected void waitForElementClicable(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));

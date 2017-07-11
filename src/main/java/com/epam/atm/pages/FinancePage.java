@@ -28,14 +28,16 @@ public class FinancePage extends SmartWaiters {
     }
 
     public FinancePage popupWindowClose() {
-        try{waitForElementVisible(popUpWindowClose);
-        if (isElementPresent(popUpWindowClose)) {
-            waitForElementClicable(popUpWindowClose);
-            driver.findElement(popUpWindowClose).click();
-            String window = driver.getWindowHandle();
-            driver.switchTo().window(window);
-            System.out.println("Pop-up window closed");
-        }}catch(Exception exception){
+        try {
+            waitForElementVisible(popUpWindowClose);
+            if (isElementPresent(popUpWindowClose)) {
+                waitForElementClicable(popUpWindowClose);
+                driver.findElement(popUpWindowClose).click();
+                String window = driver.getWindowHandle();
+                driver.switchTo().window(window);
+                System.out.println("Pop-up window closed");
+            }
+        } catch (Exception exception) {
             System.out.println("Pop-up window not appear");
         }
         return new FinancePage();
@@ -47,7 +49,6 @@ public class FinancePage extends SmartWaiters {
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
-        //bank.selectByIndex(8);
         bank.selectByVisibleText(BANK);
         System.out.println("Bank is selected");
         return new FinancePage();
@@ -69,10 +70,6 @@ public class FinancePage extends SmartWaiters {
         driver.findElement(sortByRateItem).click();//Desending
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
         String results = driver.findElement(thehighestRate).getText();
-//        double res = Double.parseDouble(results.substring(0, 2));
-//        if (res > 15) {
-//            System.out.println("Есть ставка более 15% и это:" + results);
-//        } else System.out.println("Нет ставки более 15%, самая большая " + res + "%");
         System.out.println("Results of test were collected");
         return Double.parseDouble(results.substring(0, 2));
     }

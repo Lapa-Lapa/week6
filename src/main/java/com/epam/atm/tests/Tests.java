@@ -28,7 +28,7 @@ public class Tests extends TestsDataProvider {
         filmsPage.selectTime(TIME)
                 .selectFilm();
         int i = filmsPage.allShots();
-        Assert.assertEquals(i, 5, "There are four shots to this film");
+        Assert.assertEquals(i, 5, "There are five shots to this film");
     }
 
     //@Parameters({"SUM_OF_CREDIT", "BANK"})

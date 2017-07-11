@@ -17,7 +17,6 @@ public class AutoPage extends SmartWaiters {
     private static final By playButton = By.className("dmp_StartView-play-icon");
     private static final By makeButtonsVisible = By.id("dmp_Video");
     private static final By fullscreenButton = By.xpath("//button[@class='dmp_FullscreenButton dmp_ControlBarButton']");
-    private static final By header = By.xpath("//h1[contains(text(),'Видеофакт. Во Франции мотоцикл без водителя проехал несколько километров')]");
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
@@ -32,16 +31,15 @@ public class AutoPage extends SmartWaiters {
     }
 
     public AutoPage videoPlayButtonPressAndFullSize() {
-
         SwitchTo.switchToFrame(driver,frame);
         waitForElementVisible(playButton);
         driver.findElement(playButton).click();
-        waitElement(20000);
+        waitElement(15000);
         driver.findElement(makeButtonsVisible).click();
         waitElement(500);
         waitForElementClicable(fullscreenButton);
         driver.findElement(fullscreenButton).click();
-        System.out.println("Video start");
+        System.out.println("Video full start");
         return new AutoPage();
     }
 
@@ -50,17 +48,14 @@ public class AutoPage extends SmartWaiters {
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        //double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         WebElement frame = driver.findElement(By.xpath("//*[@id='article_body']/p[3]/iframe"));
         int frameheight = frame.getSize().getHeight();
-        System.out.println(frameheight);
-        System.out.println(height);
         boolean result = false;
         if(frameheight >= (0.9*height)){
             result=true;
         }
         System.out.println("Results of test were collected");
-        return result;// Игорь!))Почему оно его видит если fullscreen и он не виден?
-    }//А если не переключаться на window, то падает тест! :(
+        return result;
+    }
 }

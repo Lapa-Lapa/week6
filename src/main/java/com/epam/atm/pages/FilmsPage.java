@@ -16,7 +16,7 @@ public class FilmsPage extends SmartWaiters {
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
-    //private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+//    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
     private static final By filmTransformers = By.xpath("//span[contains(text(),'Гадкий я 3')]");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");

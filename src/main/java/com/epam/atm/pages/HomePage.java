@@ -2,6 +2,7 @@ package com.epam.atm.pages;
 
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
 import static com.epam.atm.waiters.ThreadSleep.waitElement;
@@ -39,10 +40,14 @@ public class HomePage extends SmartWaiters {
     }
 
     public HomePage mobileVersionEnable() {
+        waitForElementVisible(AFISHA);
         int i = 0;
         while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK) && i < 30) {
             Actions actions = new Actions(driver);
-            actions.sendKeys(" ");
+            driver.findElement(AFISHA).sendKeys(Keys.SPACE);
+            //actions.sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).perform();
+            //actions.sendKeys(" ");
+            waitElement(1000);
             //driver.findElement(PAGE).sendKeys(Keys.SPACE);
             i++;
         }
