@@ -1,13 +1,16 @@
 package com.epam.atm.tests;
 
 import com.epam.atm.dataprovider.TestsDataProvider;
-import com.epam.atm.pages.*;
 import com.epam.atm.driver.WebDriverSingleton;
+import com.epam.atm.pages.AutoPage;
+import com.epam.atm.pages.FilmsPage;
+import com.epam.atm.pages.FinancePage;
+import com.epam.atm.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class Tests extends TestsDataProvider {
+public class Tests extends TestsDataProvider{
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
      1) Пройти в афишу

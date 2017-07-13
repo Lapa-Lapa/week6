@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.Logger;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -23,7 +24,7 @@ public class FinancePage extends SmartWaiters {
 
     public FinancePage pressChoseCreditButton() {
         driver.findElement(choseCreditButton).click();
-        System.out.println("Credits page is open");
+        Logger.info("Credits page is open");
         return new FinancePage();
     }
 
@@ -35,10 +36,10 @@ public class FinancePage extends SmartWaiters {
                 driver.findElement(popUpWindowClose).click();
                 String window = driver.getWindowHandle();
                 driver.switchTo().window(window);
-                System.out.println("Pop-up window closed");
+                Logger.info("Pop-up window closed");
             }
         } catch (Exception exception) {
-            System.out.println("Pop-up window not appear");
+            Logger.error("Pop-up window not appear");
         }
         return new FinancePage();
     }
@@ -50,13 +51,13 @@ public class FinancePage extends SmartWaiters {
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         bank.selectByVisibleText(BANK);
-        System.out.println("Bank is selected");
+        Logger.info("Bank is selected");
         return new FinancePage();
     }
 
     public FinancePage setSumOfCredit(int SUM_OF_CREDIT) {
         driver.findElement(sumOfCreditField).sendKeys(String.valueOf(SUM_OF_CREDIT));
-        System.out.println("Summ of credit is set");
+        Logger.info("Summ of credit is set");
         return new FinancePage();
     }
 
@@ -70,7 +71,7 @@ public class FinancePage extends SmartWaiters {
         driver.findElement(sortByRateItem).click();//Desending
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
         String results = driver.findElement(thehighestRate).getText();
-        System.out.println("Results of test were collected");
+        Logger.info("Results of test were collected");
         return Double.parseDouble(results.substring(0, 2));
     }
 }

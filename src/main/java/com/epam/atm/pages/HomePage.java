@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.Logger;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -22,20 +23,20 @@ public class HomePage extends SmartWaiters {
 
     public HomePage open() {
         driver.get(URL);
-        System.out.println("Home page is open");
+        Logger.info("Home page is open");
         return this;
     }
 
     public HomePage afishaOpen() {
         highlightUnhighlightClickElement(AFISHA);
-        System.out.println("Afisha page is open");
+        Logger.info("Afisha page is open");
         return new HomePage();
     }
 
     public HomePage financeOpen() {
         highlightUnhighlightClickElement(SECTION);
         highlightUnhighlightClickElement(FINANCE);
-        System.out.println("Finance page is open");
+        Logger.info("Finance page is open");
         return new HomePage();
     }
 
@@ -54,7 +55,7 @@ public class HomePage extends SmartWaiters {
         //JavascriptExecutor jse = (JavascriptExecutor) driver;
         //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
         highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK);
-        System.out.println("Mobile version enabled");
+        Logger.info("Mobile version enabled");
         return new HomePage();
     }
 
@@ -67,7 +68,7 @@ public class HomePage extends SmartWaiters {
         highlightUnhighlightClickElement(MOBILE_SECTION);
         highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS);
         highlightUnhighlightClickElement(AUTO);
-        System.out.println("Auto page is open");
+        Logger.info("Auto page is open");
         return new HomePage();
     }
 }

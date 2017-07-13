@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.Logger;
 import com.epam.atm.utils.SwitchTo;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
@@ -23,7 +24,7 @@ public class FilmsPage extends SmartWaiters {
 
     public FilmsPage openFilms() {
         driver.findElement(FILMS).click();
-        System.out.println("Films page is open");
+        Logger.info("Films page is open");
         return new FilmsPage();
     }
 
@@ -34,7 +35,7 @@ public class FilmsPage extends SmartWaiters {
             i++;
         }
         driver.findElement(date9Jule).click();
-        System.out.println("Date is selected");
+        Logger.info("Date is selected");
         return new FilmsPage();
     }
 
@@ -44,9 +45,9 @@ public class FilmsPage extends SmartWaiters {
             SwitchTo.switchToFrameAndClose(driver, popupFrame, popupWindowCloseButton);
             String window = driver.getWindowHandle();
             driver.switchTo().window(window);
-            System.out.println("Pop up window closed");
+            Logger.info("Pop up window closed");
         }}catch (Exception exception){
-            System.out.println("Pop up window do not appear");
+            Logger.error("Pop up window do not appear");
         }
         return new FilmsPage();
     }
@@ -65,7 +66,7 @@ public class FilmsPage extends SmartWaiters {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47.5) - 385), 0).click().release().perform();
         }
         waitElement(1500);
-        System.out.println("Time is selected");
+        Logger.info("Time is selected");
         return new FilmsPage();
     }
 
@@ -74,7 +75,7 @@ public class FilmsPage extends SmartWaiters {
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(FILMS));
         waitForAjaxProcessed();
         driver.findElement(filmTransformers).click();
-        System.out.println("Film is selected");
+        Logger.info("Film is selected");
         return new FilmsPage();
     }
 
@@ -82,7 +83,7 @@ public class FilmsPage extends SmartWaiters {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(areaForShots));
         waitForElementVisible(areaForShots);
-        System.out.println("Quantity of shots are get");
+        Logger.info("Quantity of shots are get");
         return driver.findElements(anyPicture).size();
     }
 }

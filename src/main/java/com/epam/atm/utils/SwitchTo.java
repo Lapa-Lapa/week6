@@ -13,7 +13,7 @@ public class SwitchTo {
         driver.findElement(closeButton).click();
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        System.out.println("Pop up window closed");
+        Logger.info("Pop up window closed");
     }
 
     public void switchToWindow(By locator) {

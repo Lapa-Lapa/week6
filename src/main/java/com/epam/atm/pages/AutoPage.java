@@ -1,5 +1,6 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.utils.Logger;
 import com.epam.atm.utils.SwitchTo;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
@@ -20,13 +21,13 @@ public class AutoPage extends SmartWaiters {
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
-        System.out.println("Section video is open");
+        Logger.info("Section video is open");
         return new AutoPage();
     }
 
     public AutoPage postOpen() {
         driver.findElement(post).click();
-        System.out.println("Post is open");
+        Logger.info("Post is open");
         return new AutoPage();
     }
 
@@ -39,7 +40,7 @@ public class AutoPage extends SmartWaiters {
         waitElement(500);
         waitForElementClicable(fullscreenButton);
         driver.findElement(fullscreenButton).click();
-        System.out.println("Video full start");
+        Logger.info("Video full start");
         return new AutoPage();
     }
 
@@ -55,7 +56,7 @@ public class AutoPage extends SmartWaiters {
         if(frameheight >= (0.9*height)){
             result=true;
         }
-        System.out.println("Results of test were collected");
+        Logger.info("Results of test were collected");
         return result;
     }
 }
