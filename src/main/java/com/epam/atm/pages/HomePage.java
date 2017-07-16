@@ -1,6 +1,7 @@
 package com.epam.atm.pages;
 
 import com.epam.atm.utils.Logger;
+import com.epam.atm.waiters.HighlitersUnhighliters;
 import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,14 +29,14 @@ public class HomePage extends SmartWaiters {
     }
 
     public HomePage afishaOpen() {
-        highlightUnhighlightClickElement(AFISHA);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(AFISHA, driver);
         Logger.info("Afisha page is open");
         return new HomePage();
     }
 
     public HomePage financeOpen() {
-        highlightUnhighlightClickElement(SECTION);
-        highlightUnhighlightClickElement(FINANCE);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(SECTION, driver);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(FINANCE, driver);
         Logger.info("Finance page is open");
         return new HomePage();
     }
@@ -54,7 +55,7 @@ public class HomePage extends SmartWaiters {
         }
         //JavascriptExecutor jse = (JavascriptExecutor) driver;
         //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
-        highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK, driver);
         Logger.info("Mobile version enabled");
         return new HomePage();
     }
@@ -62,12 +63,12 @@ public class HomePage extends SmartWaiters {
     public HomePage autoOpen() {
         waitElement(2000);
         driver.switchTo().frame(driver.findElement(POPUP_FRAME));
-        highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON, driver);
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        highlightUnhighlightClickElement(MOBILE_SECTION);
-        highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS);
-        highlightUnhighlightClickElement(AUTO);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_SECTION, driver);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS, driver);
+        HighlitersUnhighliters.highlightUnhighlightClickElement(AUTO, driver);
         Logger.info("Auto page is open");
         return new HomePage();
     }

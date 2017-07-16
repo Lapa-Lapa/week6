@@ -1,5 +1,7 @@
 package com.epam.atm.driver;
 
+import com.epam.atm.factorymethod.ChromeDriverCreator;
+import com.epam.atm.factorymethod.WebDriverCreator;
 import com.epam.atm.utils.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,8 +22,10 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        //System.setProperty("webdriverdecorator.chrome.driver", "src/main/resources/chromedriver.exe");
+        //WebDriver driver = new ChromeDriver();
+        WebDriverCreator creator = new ChromeDriverCreator();
+        WebDriver driver = creator.FactoryMethod();
 //          *      *       *       *       *
 //        WebDriver driver = null;
 //        try {
@@ -33,7 +37,7 @@ public class WebDriverSingleton {
 //          *      *       *       *       *
         driver.manage().timeouts().pageLoadTimeout(35, TimeUnit.SECONDS);//week5
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);//week5
-        driver.manage().timeouts().setScriptTimeout(35,TimeUnit.SECONDS);//next line 19 slide
+        driver.manage().timeouts().setScriptTimeout(35, TimeUnit.SECONDS);//next line 19 slide
         //https://www.slideshare.net/ssuser220b38/java-explicit-and-implicit-wait-testing-ajax-applications
         driver.manage().window().maximize();
         return driver;

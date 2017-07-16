@@ -2,22 +2,35 @@ package com.epam.atm.waiters;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HighlitersUnhighliters extends SmartWaiters {
+public class HighlitersUnhighliters {
 
-    protected void highlightElement(By locator) {
+    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 25;
+
+    public static void waitForElementVisible(By locator, WebDriver driver) {
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public static void waitForElementClicable(By locator, WebDriver driver) {
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public static void highlightElement(By locator, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", driver.findElement(locator));
     }
 
-    protected void highlightUnhighlightClickElement(By locator) {
-        waitForElementVisible(locator);
-        waitForElementClicable(locator);
-        highlightElement(locator);
-        unHighlightElement(locator);
+    public static void highlightUnhighlightClickElement(By locator, WebDriver driver) {
+        waitForElementVisible(locator,driver);
+        waitForElementClicable(locator,driver);
+        highlightElement(locator,driver);
+        unHighlightElement(locator,driver);
         driver.findElement(locator).click();
     }
 
-    protected void unHighlightElement(By locator) {
+    public static void unHighlightElement(By locator, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
     }
 }
