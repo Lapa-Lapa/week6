@@ -2,13 +2,14 @@ package com.epam.atm.webdriverdecorator;
 
 import com.epam.atm.utils.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Set;
 
-public class CustomDriverDecorator implements WebDriver {
+public class CustomDriverDecorator implements WebDriver,JavascriptExecutor {
 
     public WebDriver driver;
 
@@ -73,5 +74,13 @@ public class CustomDriverDecorator implements WebDriver {
     public Options manage() {
         Logger.info("Manage decorator");
         return driver.manage();
+    }
+
+    public Object executeScript(String s, Object... objects) {
+        return null;
+    }
+
+    public Object executeAsyncScript(String s, Object... objects) {
+        return null;
     }
 }

@@ -1,8 +1,8 @@
 package com.epam.atm.pages;
 
-import com.epam.atm.factorymethod.WebDriverCreator;
+import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.utils.Logger;
-import com.epam.atm.utils.SwitchTo;
+import com.epam.atm.utils.WorkWithFrames;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,18 +12,18 @@ import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
-public class AutoPage extends WebDriverCreator {
-    @Override
-    public WebDriver CreateCustomDriver() {
-        return null;
-    }
-
+public class AutoPage {
+    WebDriver driver;
     private static final By videoSection = By.xpath("//h3/a[contains(text(),'Видео')]");
     private static final By post = By.xpath("//span[@class='entry-head _title'][contains(text(),'Видеофакт. Во Франции мотоцикл без водителя проехал несколько километров')]");
     private static final By frame = By.xpath("//*[@id='article_body']/p[3]/iframe");
     private static final By playButton = By.className("dmp_StartView-play-icon");
-    private static final By makeButtonsVisible = By.id("dmp_Video");
+    private static final By videoManagementTools = By.id("dmp_Video");
     private static final By fullscreenButton = By.xpath("//button[@class='dmp_FullscreenButton dmp_ControlBarButton']");
+
+    public AutoPage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance();
+    }
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
@@ -38,13 +38,13 @@ public class AutoPage extends WebDriverCreator {
     }
 
     public AutoPage videoPlayButtonPressAndFullSize() {
-        SwitchTo.switchToFrame(driver, frame);
-        waitForElementVisible(playButton,driver);
+        WorkWithFrames.switchToFrame(driver, frame);
+        waitForElementVisible(playButton, driver);
         driver.findElement(playButton).click();
         waitSetTime(15000);
-        driver.findElement(makeButtonsVisible).click();
+        driver.findElement(videoManagementTools).click();
         waitSetTime(500);
-        waitForElementClicable(fullscreenButton,driver);
+        waitForElementClicable(fullscreenButton, driver);
         driver.findElement(fullscreenButton).click();
         Logger.info("Video full start");
         return new AutoPage();

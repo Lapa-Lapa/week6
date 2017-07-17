@@ -8,11 +8,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SmartWaiters {
+public class AbstractPage {
     private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
     WebDriver driver;
 
-    protected SmartWaiters() {
+    protected AbstractPage() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
     }
 

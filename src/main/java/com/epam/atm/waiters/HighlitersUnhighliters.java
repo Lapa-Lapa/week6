@@ -1,12 +1,14 @@
 package com.epam.atm.waiters;
 
+import com.epam.atm.factorymethod.ChromeDriverCreator;
+import com.epam.atm.factorymethod.WebDriverCreator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HighlitersUnhighliters{
+public class HighlitersUnhighliters {
 
     private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
 
@@ -23,10 +25,10 @@ public class HighlitersUnhighliters{
     }
 
     public static void highlightUnhighlightClickElement(By locator, WebDriver driver) {
-        waitForElementVisible(locator,driver);
-        waitForElementClicable(locator,driver);
-        //highlightElement(locator,driver);
-        //unHighlightElement(locator,driver);
+        waitForElementVisible(locator, driver);
+        waitForElementClicable(locator, driver);
+        highlightElement(locator, driver);
+        unHighlightElement(locator, driver);
         driver.findElement(locator).click();
     }
 

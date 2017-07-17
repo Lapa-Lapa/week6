@@ -1,24 +1,19 @@
 package com.epam.atm.pages;
 
-import com.epam.atm.factorymethod.WebDriverCreator;
+import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.utils.Logger;
-import com.epam.atm.utils.SwitchTo;
+import com.epam.atm.utils.WorkWithFrames;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
-import static com.epam.atm.waiters.SmartWaiters.isElementPresent;
-import static com.epam.atm.waiters.SmartWaiters.isElementVisible;
+import static com.epam.atm.waiters.AbstractPage.isElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
-public class FilmsPage extends WebDriverCreator {
-    @Override
-    public WebDriver CreateCustomDriver() {
-        return null;
-    }
-
+public class FilmsPage {
+    WebDriver driver;
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
     private static final By date9Jule = By.xpath("//a[@title='воскресенье, 23 июля']");
@@ -29,6 +24,10 @@ public class FilmsPage extends WebDriverCreator {
     private static final By filmTransformers = By.xpath("//span[contains(text(),'Гадкий я 3')]");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
+
+    public FilmsPage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance();
+    }
 
     public FilmsPage openFilms() {
         driver.findElement(FILMS).click();
@@ -50,12 +49,9 @@ public class FilmsPage extends WebDriverCreator {
     public FilmsPage popupWindowClose() {
         try {
             waitForElementVisible(popupFrame, driver);
-            if (isElementPresent(popupFrame, driver)) {
-                SwitchTo.switchToFrameAndClose(driver, popupFrame, popupWindowCloseButton);
-                String window = driver.getWindowHandle();
-                driver.switchTo().window(window);
-                Logger.info("Pop up window closed");
-            }
+            WorkWithFrames.switchToFrame(driver, popupFrame);
+            WorkWithFrames.frameClose(driver, popupWindowCloseButton);
+            WorkWithFrames.switchFromFrame(driver);
         } catch (Exception exception) {
             Logger.error("Pop up window do not appear");
         }
@@ -91,7 +87,7 @@ public class FilmsPage extends WebDriverCreator {
     public int allShots() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(areaForShots));
-        waitForElementVisible(areaForShots,driver);
+        waitForElementVisible(areaForShots, driver);
         Logger.info("Quantity of shots are get");
         return driver.findElements(anyPicture).size();
     }

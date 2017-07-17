@@ -10,16 +10,11 @@ import org.openqa.selenium.support.ui.Select;
 
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
-import static com.epam.atm.waiters.SmartWaiters.isElementPresent;
+import static com.epam.atm.waiters.AbstractPage.isElementPresent;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class FinancePage {
     WebDriver driver;
-
-    public FinancePage() {
-        this.driver = WebDriverSingleton.getWebDriverInstance();
-    }
-
     private static final By choseCreditButton = By.xpath("//a[@class='button flat-white']");
     private static final By popUpWindowClose = By.className("scrollable-close");
     private static final By additionalOptionsForCredit = By.id("show_full_filter");
@@ -30,6 +25,9 @@ public class FinancePage {
     private static final By sortByRateItem = By.xpath("//span[contains(text(),'Ставка')]");
     private static final By thehighestRate = By.xpath("//div[@class='wrapper']/big");
 
+    public FinancePage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance();
+    }
 
     public FinancePage pressChoseCreditButton() {
         driver.findElement(choseCreditButton).click();

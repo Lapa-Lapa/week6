@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
-import static com.epam.atm.waiters.SmartWaiters.isElementVisible;
+import static com.epam.atm.waiters.AbstractPage.isElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class HomePage {

@@ -6,6 +6,7 @@ import com.epam.atm.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
 
 public class Tests extends TestsDataProvider {
     @Test(description = "Афиша.tut.by", priority = 0)
@@ -29,7 +30,6 @@ public class Tests extends TestsDataProvider {
                 .allShots(), 5, "There are five shots to this film");
     }
 
-    //@Parameters({"SUM_OF_CREDIT", "BANK"})
     @Test(description = "Финансы.tut.by", priority = 1, dataProvider = "dataForFinance")
     /**    ----Финансы.tut.by
      1) Пройти в финансы
