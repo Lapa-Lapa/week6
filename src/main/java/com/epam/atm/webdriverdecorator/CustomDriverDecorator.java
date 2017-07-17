@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class CustomDriverDecorator implements WebDriver {
+
     public WebDriver driver;
 
     public CustomDriverDecorator(WebDriver driver) {

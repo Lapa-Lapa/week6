@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HighlitersUnhighliters {
+public class HighlitersUnhighliters{
 
-    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 25;
+    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
 
     public static void waitForElementVisible(By locator, WebDriver driver) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -25,8 +25,8 @@ public class HighlitersUnhighliters {
     public static void highlightUnhighlightClickElement(By locator, WebDriver driver) {
         waitForElementVisible(locator,driver);
         waitForElementClicable(locator,driver);
-        highlightElement(locator,driver);
-        unHighlightElement(locator,driver);
+        //highlightElement(locator,driver);
+        //unHighlightElement(locator,driver);
         driver.findElement(locator).click();
     }
 

@@ -2,15 +2,12 @@ package com.epam.atm.tests;
 
 import com.epam.atm.dataprovider.TestsDataProvider;
 import com.epam.atm.driver.WebDriverSingleton;
-import com.epam.atm.pages.AutoPage;
-import com.epam.atm.pages.FilmsPage;
-import com.epam.atm.pages.FinancePage;
 import com.epam.atm.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class Tests extends TestsDataProvider{
+public class Tests extends TestsDataProvider {
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
      1) Пройти в афишу
@@ -22,16 +19,14 @@ public class Tests extends TestsDataProvider{
     public void afishaTutByTest() {
         final int TIME = 20;
         HomePage homePage = new HomePage()
-                .open()
-                .afishaOpen();
-        FilmsPage filmsPage = new FilmsPage()
+                .open();
+        Assert.assertEquals(homePage.afishaOpen()
                 .openFilms()
                 .selectDate()
-                .popupWindowClose();
-        filmsPage.selectTime(TIME)
-                .selectFilm();
-        int i = filmsPage.allShots();
-        Assert.assertEquals(i, 5, "There are five shots to this film");
+                .popupWindowClose()
+                .selectTime(TIME)
+                .selectFilm()
+                .allShots(), 5, "There are five shots to this film");
     }
 
     //@Parameters({"SUM_OF_CREDIT", "BANK"})
@@ -42,17 +37,14 @@ public class Tests extends TestsDataProvider{
      3) В дополнительных условиях - Беларусбанк
      4) Сумма кредита 3000
      5) Убедиться, что есть хоть один кредит со ставкой > 15%*/
-    public void financeTutByTest(String BANK,int SUM_OF_CREDIT) {
+    public void financeTutByTest(String BANK, int SUM_OF_CREDIT) {
         HomePage homePage = new HomePage()
-                .open()
-                .financeOpen();
-        FinancePage financePage = new FinancePage()
-                .pressChoseCreditButton()
+                .open();
+        Double res = homePage.financeOpen().pressChoseCreditButton()
                 .popupWindowClose()
                 .setBankAsOptionForCredit(BANK)
-                .setSumOfCredit(SUM_OF_CREDIT);
-        Double res = financePage.getResults();
-        Assert.assertTrue(res > 15, "Кредиты со ставкой больше 15% есть");
+                .setSumOfCredit(SUM_OF_CREDIT).getResults();
+        Assert.assertTrue(res > 15, "The biggest rate is = " + res + "%");
     }
 
     @Test(description = "Auto.tut.by", priority = 2)
@@ -68,13 +60,13 @@ public class Tests extends TestsDataProvider{
     public void autoTutByTest() {
         HomePage homePage = new HomePage()
                 .open()
-                .mobileVersionEnable()
-                .autoOpen();
-        AutoPage autoPage = new AutoPage()
+                .mobileVersionEnable();
+        Assert.assertTrue(homePage
+                .autoOpen()
                 .videoSectionOpen()
                 .postOpen()
-                .videoPlayButtonPressAndFullSize();
-        Assert.assertTrue(autoPage.getResultOfScalingToFullScreen());
+                .videoPlayButtonPressAndFullSize()
+                .getResultOfScalingToFullScreen(), "Full screen player");
     }
 
     @AfterClass(description = "close browser")

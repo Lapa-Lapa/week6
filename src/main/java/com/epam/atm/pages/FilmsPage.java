@@ -1,15 +1,23 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.factorymethod.WebDriverCreator;
 import com.epam.atm.utils.Logger;
 import com.epam.atm.utils.SwitchTo;
-import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import static com.epam.atm.waiters.ThreadSleep.waitElement;
+import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
+import static com.epam.atm.waiters.SmartWaiters.isElementPresent;
+import static com.epam.atm.waiters.SmartWaiters.isElementVisible;
+import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
-public class FilmsPage extends SmartWaiters {
+public class FilmsPage extends WebDriverCreator {
+    @Override
+    public WebDriver CreateCustomDriver() {
+        return null;
+    }
 
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
@@ -17,7 +25,7 @@ public class FilmsPage extends SmartWaiters {
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
-//    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+    //    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
     private static final By filmTransformers = By.xpath("//span[contains(text(),'Гадкий я 3')]");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
@@ -30,7 +38,7 @@ public class FilmsPage extends SmartWaiters {
 
     public FilmsPage selectDate() {
         int i = 0;
-        while (!isElementVisible(date9Jule) && i < 30) {
+        while (!isElementVisible(date9Jule, driver) && i < 30) {
             driver.findElement(arrowRightAvailableDates).click();
             i++;
         }
@@ -40,13 +48,15 @@ public class FilmsPage extends SmartWaiters {
     }
 
     public FilmsPage popupWindowClose() {
-        try{waitForElementVisible(popupFrame);
-        if (isElementPresent(popupFrame)) {
-            SwitchTo.switchToFrameAndClose(driver, popupFrame, popupWindowCloseButton);
-            String window = driver.getWindowHandle();
-            driver.switchTo().window(window);
-            Logger.info("Pop up window closed");
-        }}catch (Exception exception){
+        try {
+            waitForElementVisible(popupFrame, driver);
+            if (isElementPresent(popupFrame, driver)) {
+                SwitchTo.switchToFrameAndClose(driver, popupFrame, popupWindowCloseButton);
+                String window = driver.getWindowHandle();
+                driver.switchTo().window(window);
+                Logger.info("Pop up window closed");
+            }
+        } catch (Exception exception) {
             Logger.error("Pop up window do not appear");
         }
         return new FilmsPage();
@@ -56,16 +66,16 @@ public class FilmsPage extends SmartWaiters {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(filmTransformers));
         Actions actions = new Actions(driver);
-        waitElement(900);
+        waitSetTime(900);
         if (TIME <= 17) {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47)), 0).click().release().perform();
         }
         if (TIME >= 20) {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(385, 0).click().release().perform();
-            waitElement(900);
+            waitSetTime(900);
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47.5) - 385), 0).click().release().perform();
         }
-        waitElement(1500);
+        waitSetTime(1500);
         Logger.info("Time is selected");
         return new FilmsPage();
     }
@@ -73,7 +83,6 @@ public class FilmsPage extends SmartWaiters {
     public FilmsPage selectFilm() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(FILMS));
-        waitForAjaxProcessed();
         driver.findElement(filmTransformers).click();
         Logger.info("Film is selected");
         return new FilmsPage();
@@ -82,7 +91,7 @@ public class FilmsPage extends SmartWaiters {
     public int allShots() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(areaForShots));
-        waitForElementVisible(areaForShots);
+        waitForElementVisible(areaForShots,driver);
         Logger.info("Quantity of shots are get");
         return driver.findElements(anyPicture).size();
     }

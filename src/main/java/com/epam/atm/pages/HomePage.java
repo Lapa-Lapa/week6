@@ -1,16 +1,19 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.utils.Logger;
 import com.epam.atm.waiters.HighlitersUnhighliters;
-import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import static com.epam.atm.waiters.ThreadSleep.waitElement;
+import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
+import static com.epam.atm.waiters.SmartWaiters.isElementVisible;
+import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
-public class HomePage extends SmartWaiters {
-
+public class HomePage {
+    WebDriver driver;
     private static final String URL = "https://www.tut.by";
     private static final By AFISHA = By.xpath("//a[contains(text(),'Афиша')]");
     private static final By SECTION = By.xpath("//a[contains(text(),'Разделы')]");
@@ -22,34 +25,38 @@ public class HomePage extends SmartWaiters {
     private static final By MOBILE_MORE_SECTIONS = By.xpath("//ul[@id='responsive_menu']//span[@class=contains( text(),'Все разделы')]");
     private static final By AUTO = By.xpath("//i[@class='b-res-icon res1752 b-icon']/../span");
 
+    public HomePage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance();
+    }
+
     public HomePage open() {
         driver.get(URL);
         Logger.info("Home page is open");
         return this;
     }
 
-    public HomePage afishaOpen() {
+    public FilmsPage afishaOpen() {
         HighlitersUnhighliters.highlightUnhighlightClickElement(AFISHA, driver);
         Logger.info("Afisha page is open");
-        return new HomePage();
+        return new FilmsPage();
     }
 
-    public HomePage financeOpen() {
+    public FinancePage financeOpen() {
         HighlitersUnhighliters.highlightUnhighlightClickElement(SECTION, driver);
         HighlitersUnhighliters.highlightUnhighlightClickElement(FINANCE, driver);
         Logger.info("Finance page is open");
-        return new HomePage();
+        return new FinancePage();
     }
 
     public HomePage mobileVersionEnable() {
-        waitForElementVisible(AFISHA);
+        waitForElementVisible(AFISHA, driver);
         int i = 0;
-        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK) && i < 30) {
+        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK, driver) && (i < 30)) {
             Actions actions = new Actions(driver);
             driver.findElement(AFISHA).sendKeys(Keys.SPACE);
             //actions.sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).perform();
             //actions.sendKeys(" ");
-            waitElement(1000);
+            waitSetTime(1000);
             //driver.findElement(PAGE).sendKeys(Keys.SPACE);
             i++;
         }
@@ -60,8 +67,8 @@ public class HomePage extends SmartWaiters {
         return new HomePage();
     }
 
-    public HomePage autoOpen() {
-        waitElement(2000);
+    public AutoPage autoOpen() {
+        waitSetTime(2000);
         driver.switchTo().frame(driver.findElement(POPUP_FRAME));
         HighlitersUnhighliters.highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON, driver);
         String window = driver.getWindowHandle();
@@ -70,6 +77,6 @@ public class HomePage extends SmartWaiters {
         HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS, driver);
         HighlitersUnhighliters.highlightUnhighlightClickElement(AUTO, driver);
         Logger.info("Auto page is open");
-        return new HomePage();
+        return new AutoPage();
     }
 }

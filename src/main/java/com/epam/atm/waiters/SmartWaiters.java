@@ -9,18 +9,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SmartWaiters {
-    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 25;
-    protected WebDriver driver;
+    private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
+    WebDriver driver;
 
     protected SmartWaiters() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
     }
 
-    protected boolean isElementPresent(By locator) {
+    public static boolean isElementPresent(By locator, WebDriver driver) {
         return !driver.findElements(locator).isEmpty();
     }
 
-    protected boolean isElementVisible(By locator) {
+    public static boolean isElementVisible(By locator, WebDriver driver) {
         return driver.findElement(locator).isDisplayed();
     }
 

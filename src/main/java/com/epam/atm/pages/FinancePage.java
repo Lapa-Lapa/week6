@@ -1,15 +1,24 @@
 package com.epam.atm.pages;
 
+import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.utils.Logger;
-import com.epam.atm.waiters.SmartWaiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import static com.epam.atm.waiters.ThreadSleep.waitElement;
+import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable;
+import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
+import static com.epam.atm.waiters.SmartWaiters.isElementPresent;
+import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
-public class FinancePage extends SmartWaiters {
+public class FinancePage {
+    WebDriver driver;
+
+    public FinancePage() {
+        this.driver = WebDriverSingleton.getWebDriverInstance();
+    }
 
     private static final By choseCreditButton = By.xpath("//a[@class='button flat-white']");
     private static final By popUpWindowClose = By.className("scrollable-close");
@@ -30,9 +39,9 @@ public class FinancePage extends SmartWaiters {
 
     public FinancePage popupWindowClose() {
         try {
-            waitForElementVisible(popUpWindowClose);
-            if (isElementPresent(popUpWindowClose)) {
-                waitForElementClicable(popUpWindowClose);
+            waitForElementVisible(popUpWindowClose, driver);
+            if (isElementPresent(popUpWindowClose, driver)) {
+                waitForElementClicable(popUpWindowClose, driver);
                 driver.findElement(popUpWindowClose).click();
                 String window = driver.getWindowHandle();
                 driver.switchTo().window(window);
@@ -45,8 +54,8 @@ public class FinancePage extends SmartWaiters {
     }
 
     public FinancePage setBankAsOptionForCredit(String BANK) {
-        waitElement(500);
-        waitForElementVisible(additionalOptionsForCredit);
+        waitSetTime(500);
+        waitForElementVisible(additionalOptionsForCredit, driver);
         driver.findElement(additionalOptionsForCredit).click();
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
@@ -62,7 +71,7 @@ public class FinancePage extends SmartWaiters {
     }
 
     public Double getResults() {
-        waitForElementVisible(tableWithResults);
+        waitForElementVisible(tableWithResults, driver);
         driver.findElement(submitButton).click();
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));

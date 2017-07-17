@@ -1,7 +1,7 @@
 package com.epam.atm.waiters;
 
 public class ThreadSleep {
-    public static void waitElement(int time){
+    public static void waitSetTime(int time){
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
