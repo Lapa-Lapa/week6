@@ -13,6 +13,7 @@ public class ParserFromJSON {
     private static final String FILE_PATH = "src\\main\\resources\\" + FILE_NAME;
     private static String BANKDATA = "";
     private static BankData list[];
+
     Type itemsArrType = new TypeToken<BankData[]>() {
     }.getType();
 

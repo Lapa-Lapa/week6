@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Set;
 
-public class CustomDriverDecorator implements WebDriver,JavascriptExecutor {
+public class CustomDriverDecorator implements WebDriver, JavascriptExecutor {
 
     public WebDriver driver;
 
@@ -44,8 +44,8 @@ public class CustomDriverDecorator implements WebDriver,JavascriptExecutor {
     }
 
     public void close() {
-        driver.close();
         Logger.info("WebDriver Close");
+        driver.close();
     }
 
     public void quit() {

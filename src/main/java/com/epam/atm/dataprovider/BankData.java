@@ -1,8 +1,8 @@
 package com.epam.atm.dataprovider;
 
 public class BankData {
-    String BANK;
-    int SUM_OF_CREDIT;
+    private String BANK;
+    private int SUM_OF_CREDIT;
 
     public BankData() {
     }
