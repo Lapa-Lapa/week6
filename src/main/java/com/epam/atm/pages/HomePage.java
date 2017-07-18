@@ -8,12 +8,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.AbstractPage.isElementVisible;
+import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class HomePage {
-    WebDriver driver;
+    private static WebDriver driver;
     private static final String URL = "https://www.tut.by";
     private static final By AFISHA = By.xpath("//a[contains(text(),'Афиша')]");
     private static final By SECTION = By.xpath("//a[contains(text(),'Разделы')]");
@@ -50,18 +50,13 @@ public class HomePage {
 
     public HomePage mobileVersionEnable() {
         waitForElementVisible(AFISHA, driver);
+        Logger.info("Afisha visible");
         int i = 0;
-        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK, driver) && (i < 30)) {
-            Actions actions = new Actions(driver);
+        Actions actions = new Actions(driver);
+        while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK, driver)) {
             driver.findElement(AFISHA).sendKeys(Keys.SPACE);
-            //actions.sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).sendKeys(Keys.SPACE).perform();
-            //actions.sendKeys(" ");
-            waitSetTime(1000);
-            //driver.findElement(PAGE).sendKeys(Keys.SPACE);
-            i++;
+            waitForElementVisible(MOBILE_VERSION_ENABLE_LINK, driver);
         }
-        //JavascriptExecutor jse = (JavascriptExecutor) driver;
-        //jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(MOBILE_VERSION_ENABLE_LINK));
         HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK, driver);
         Logger.info("Mobile version enabled");
         return new HomePage();

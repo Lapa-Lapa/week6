@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverSingleton {
     private static WebDriver instance;
+    private static final int SECONDS = 25;
 
     private WebDriverSingleton() {
     }
@@ -21,22 +22,14 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-//        System.setProperty("webdriverdecorator.chrome.driver", "src/main/resources/chromedriver.exe");
-//        WebDriver driver = new ChromeDriver();
         WebDriverCreator creator = new ChromeDriverCreator();
         WebDriver driver = creator.CreateCustomDriver();
-//          *      *       *       *       *
-//        WebDriver driver = null;
-//        try {
-//            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), DesiredCapabilities.browser());
-//        } catch (MalformedURLException e) {
-//            Logger.error("Error with creating URL");
-//            e.printStackTrace();
-//        }
-//          *      *       *       *       *
-        driver.manage().timeouts().pageLoadTimeout(35, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(35, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(SECONDS, TimeUnit.SECONDS);
+        Logger.info("РageLoadTimeout set: "+SECONDS+" seconds");
+        driver.manage().timeouts().implicitlyWait(SECONDS, TimeUnit.SECONDS);
+        Logger.info("ImplicitlyWait set: "+SECONDS+" seconds");
+        driver.manage().timeouts().setScriptTimeout(SECONDS, TimeUnit.SECONDS);
+        Logger.info("ScroptTimeout set: "+SECONDS+" seconds");
         driver.manage().window().maximize();
         return driver;
     }

@@ -8,9 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
-import static com.epam.atm.waiters.AbstractPage.isElementPresent;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class FinancePage {
@@ -37,14 +35,8 @@ public class FinancePage {
 
     public FinancePage popupWindowClose() {
         try {
-            waitForElementVisible(popUpWindowClose, driver);
-            if (isElementPresent(popUpWindowClose, driver)) {
-                waitForElementClicable(popUpWindowClose, driver);
-                driver.findElement(popUpWindowClose).click();
-                String window = driver.getWindowHandle();
-                driver.switchTo().window(window);
-                Logger.info("Pop-up window closed");
-            }
+            driver.findElement(popUpWindowClose).click();
+            Logger.info("Pop-up window closed");
         } catch (Exception exception) {
             Logger.error("Pop-up window not appear");
         }

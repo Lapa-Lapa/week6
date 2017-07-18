@@ -41,7 +41,7 @@ public class AutoPage {
         WorkWithFrames.switchToFrame(driver, frame);
         waitForElementVisible(playButton, driver);
         driver.findElement(playButton).click();
-        waitSetTime(15000);
+        waitSetTime(20000);
         driver.findElement(videoManagementTools).click();
         waitSetTime(500);
         waitForElementClicable(fullscreenButton, driver);

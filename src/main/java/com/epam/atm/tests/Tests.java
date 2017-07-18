@@ -1,14 +1,15 @@
 package com.epam.atm.tests;
 
-import com.epam.atm.dataprovider.TestsDataProvider;
+import com.epam.atm.dataprovider.BankData;
+import com.epam.atm.dataprovider.ParserFromJSON;
 import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-public class Tests extends TestsDataProvider {
+public class Tests {
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
      1) Пройти в афишу
@@ -28,6 +29,23 @@ public class Tests extends TestsDataProvider {
                 .selectTime(TIME)
                 .selectFilm()
                 .allShots(), 5, "There are five shots to this film");
+    }
+
+    @DataProvider(name = "dataForFinance")
+    public static Object[][] dataForFinance() {
+        ParserFromJSON parserFromJSON = new ParserFromJSON();
+        BankData[] bankData = parserFromJSON.crateTestData();
+        String BANK = null;
+        int SUM_OF_CREDIT = 0;
+        Object obj[][] = new Object[bankData.length][];
+        for (int i = 0; i < bankData.length; i++) {
+            BANK = bankData[i].getBANK();
+            SUM_OF_CREDIT = bankData[i].getSUM_OF_CREDIT();
+            obj[i] = new Object[2];
+            obj[i][0] = BANK;
+            obj[i][1] = SUM_OF_CREDIT;
+        }
+        return obj;
     }
 
     @Test(description = "Финансы.tut.by", priority = 1, dataProvider = "dataForFinance")

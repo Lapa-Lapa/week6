@@ -24,7 +24,7 @@ public class AbstractPage {
         return driver.findElement(locator).isDisplayed();
     }
 
-    protected void waitForElementPresent(By locator) {
+    public static void waitForElementPresent(By locator, WebDriver driver) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
