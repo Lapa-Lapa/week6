@@ -17,7 +17,7 @@ public class HomePage {
     private static final String URL = "https://www.tut.by";
     private static final By AFISHA = By.xpath("//a[contains(text(),'Афиша')]");
     private static final By SECTION = By.xpath("//a[contains(text(),'Разделы')]");
-    private static final By MOBILE_VERSION_ENABLE_LINK = By.xpath("//a[contains(text(),'Версия для смартфонов')]");
+    private static final By MOBILE_VERSION_ENABLE_LINK = By.xpath("//a[contains(text(),'Мобильная версия')]");
     private static final By POPUP_FRAME = By.xpath("//iframe[contains(@sandbox,'allow-top-navigation')]");
     private static final By FINANCE = By.xpath("//ul[@class='b-topbar-more-list']/li[4]");
     private static final By POPUP_WINDOW_CLOSE_BUTTON = By.id("smartwelcomeClose");

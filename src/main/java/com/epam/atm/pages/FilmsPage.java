@@ -20,10 +20,14 @@ public class FilmsPage {
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
-    //    private static final By filmTransformers = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
-    private static final By filmTransformers = By.xpath("//span[contains(text(),'Гадкий я 3')]");
+    private static final By byeTikets = By.xpath("//div[contains(text(),'Купить билеты')]");
+    //    private static final By film = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
+   // private static final By film = By.xpath("//span[contains(text(),'Гадкий я 3')]");
+    private static final By filmPicture = By.xpath("//img[contains(@src,'gadkiy-ya-3')]");
+    private static final By film = By.xpath("//a[contains(@href,'gadkiy_ya_3')][@class='name']");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
+    public static final String SCROLL_JS = "arguments[0].scrollIntoView(true);";
 
     public FilmsPage() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
@@ -48,6 +52,7 @@ public class FilmsPage {
 
     public FilmsPage popupWindowClose() {
         try {
+            waitSetTime(3000);
             waitForElementVisible(popupFrame, driver);
             WorkWithFrames.switchToFrame(driver, popupFrame);
             WorkWithFrames.frameClose(driver, popupWindowCloseButton);
@@ -60,7 +65,7 @@ public class FilmsPage {
 
     public FilmsPage selectTime(int TIME) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(filmTransformers));
+        jse.executeScript(SCROLL_JS, driver.findElement(byeTikets));
         Actions actions = new Actions(driver);
         waitSetTime(900);
         if (TIME <= 17) {
@@ -78,15 +83,16 @@ public class FilmsPage {
 
     public FilmsPage selectFilm() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(FILMS));
-        driver.findElement(filmTransformers).click();
+        //jse.executeScript(SCROLL_JS, driver.findElement(FILMS));
+        jse.executeScript(SCROLL_JS, driver.findElement(filmPicture));
+        driver.findElement(film).click();
         Logger.info("Film is selected");
         return new FilmsPage();
     }
 
     public int allShots() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(areaForShots));
+        jse.executeScript(SCROLL_JS, driver.findElement(areaForShots));
         waitForElementVisible(areaForShots, driver);
         Logger.info("Quantity of shots are get");
         return driver.findElements(anyPicture).size();

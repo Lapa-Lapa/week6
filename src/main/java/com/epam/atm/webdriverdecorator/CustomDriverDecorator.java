@@ -76,8 +76,8 @@ public class CustomDriverDecorator implements WebDriver, JavascriptExecutor {
         return driver.manage();
     }
 
-    public Object executeScript(String s, Object... objects) {
-        return null;
+    public Object executeScript(String s, Object... args) {
+        return ((JavascriptExecutor) driver).executeScript(s, args);
     }
 
     public Object executeAsyncScript(String s, Object... objects) {
