@@ -21,8 +21,6 @@ public class FilmsPage {
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
     private static final By byeTikets = By.xpath("//div[contains(text(),'Купить билеты')]");
-    //    private static final By film = By.xpath("//span[contains(text(),'Трансформеры: Последний рыцарь')]");
-   // private static final By film = By.xpath("//span[contains(text(),'Гадкий я 3')]");
     private static final By filmPicture = By.xpath("//img[contains(@src,'gadkiy-ya-3')]");
     private static final By film = By.xpath("//a[contains(@href,'gadkiy_ya_3')][@class='name']");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
@@ -83,7 +81,6 @@ public class FilmsPage {
 
     public FilmsPage selectFilm() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        //jse.executeScript(SCROLL_JS, driver.findElement(FILMS));
         jse.executeScript(SCROLL_JS, driver.findElement(filmPicture));
         driver.findElement(film).click();
         Logger.info("Film is selected");
