@@ -81,6 +81,6 @@ public class CustomDriverDecorator implements WebDriver, JavascriptExecutor {
     }
 
     public Object executeAsyncScript(String s, Object... objects) {
-        return null;
+        return ((JavascriptExecutor) driver).executeScript(s, objects);
     }
 }
