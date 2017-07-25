@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 
 @CucumberOptions(strict = true, plugin = {"json:target/cucumber-report.json",
         "json:target/cucumber-report"}, tags = "@Test", features = "src/main/resources/cucumber_features/tutby.feature",
-        glue = {"com.epam.atm.utils"})
+        glue = {"com.epam.atm.tests"})
 
 public class BaseTutByTest extends AbstractTestNGCucumberTests {
     private static WebDriver driver = WebDriverSingleton.getWebDriverInstance();

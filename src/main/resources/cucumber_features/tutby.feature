@@ -4,20 +4,20 @@ Feature: Feature
   Scenario: afishaTutByTest
     Given user open tut.by home page
     When afisha page open
-    And select date, time "20" and film
+    And select date, time 20 and film
     Then quantity of shots is five
 
   @Test
-  Scenario: financeTutByTest
+  Scenario Outline: financeTutByTest
     Given user open tut.by home page
     When finance page open
-    And set bank "BANK" and summ "SUM_OF_CREDIT" of credit
+    And set bank "<BANK>" and summ "<SUM_OF_CREDIT>" of credit
     Then credit rate more than 15%
     Examples:
-    |BANK|SUM_OF_CREDIT|
-    |Белагропромбанк|3000|
-    |Беларусбанк|3000|
-    |Белинвестбанк|3000|
+      | BANK            | SUM_OF_CREDIT |
+      | Белагропромбанк | 3000          |
+      | Беларусбанк     | 3000          |
+      | Белинвестбанк   | 3000          |
 
   @Test
   Scenario: autoTutByTest

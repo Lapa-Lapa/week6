@@ -26,7 +26,7 @@ public class TutByTestSteps {
         new HomePage().afishaOpen();
     }
 
-    @And("^select date, time (\"[0-9]*\") and film$")
+    @And(value = "^select date, time (\\d+) and film$")
     public void select_date_time_and_film(int TIME) {
         new FilmsPage().selectDate().selectTime(TIME).selectFilm();
     }
@@ -41,7 +41,7 @@ public class TutByTestSteps {
         new HomePage().financeOpen();
     }
 
-    @And("^set bank (\"([^\"]*)\") and summ (\"([^\"]*)\") of credit$")
+    @And("^set bank \"([^\"]*)\" and summ \"([^\"]*)\" of credit$")
     public void select_date_time_and_film(String BANK, int SUM_OF_CREDIT) {
         new FinancePage().pressChoseCreditButton()
                 .popupWindowClose()
