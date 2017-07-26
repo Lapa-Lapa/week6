@@ -49,10 +49,10 @@ public class TutByTestSteps {
                 .setSumOfCredit(SUM_OF_CREDIT);
     }
 
-    @Then("^credit rate more than 15%$")
-    public void verify_credit_rates() {
+    @Then("^credit rate more than JSON:%$")
+    public void verify_credit_rates(int ExpRes) {
         Double res = new FinancePage().getResults();
-        Assert.assertTrue(res > 15, "The biggest rate is = " + res + "%");
+        Assert.assertTrue(res > ExpRes, "The biggest rate is = " + res + "%");
     }
 
     @When("^mobile version enable$")

@@ -13,7 +13,10 @@ Feature: Feature
   Scenario Outline: financeTutByTest
     When finance page open
     And set bank "<BANK>" and summ "<SUM_OF_CREDIT>" of credit
-    Then credit rate more than 15%
+    Then credit rate more than JSON:%
+    """
+    [{"ExpRes":"15"}]
+    """
     Examples:
       | BANK            | SUM_OF_CREDIT |
       | Белагропромбанк | 3000          |
