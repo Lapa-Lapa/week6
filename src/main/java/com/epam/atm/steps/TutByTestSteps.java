@@ -28,7 +28,7 @@ public class TutByTestSteps {
 
     @And(value = "^select date, time (\\d+) and film$")
     public void select_date_time_and_film(int TIME) {
-        new FilmsPage().selectDate().selectTime(TIME).selectFilm();
+        new FilmsPage().openFilms().selectDate().popupWindowClose().selectTime(TIME).selectFilm();
     }
 
     @Then("^quantity of shots is five$")

@@ -63,7 +63,7 @@ public class HomePage {
     }
 
     public AutoPage autoOpen() {
-        waitSetTime(2000);
+        waitSetTime(1500);
         driver.switchTo().frame(driver.findElement(POPUP_FRAME));
         HighlitersUnhighliters.highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON, driver);
         String window = driver.getWindowHandle();

@@ -16,7 +16,7 @@ public class FilmsPage {
     WebDriver driver;
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
-    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 23 июля']");
+    private static final By date = By.xpath("//a[@title='воскресенье, 6 августа']");
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
@@ -39,11 +39,11 @@ public class FilmsPage {
 
     public FilmsPage selectDate() {
         int i = 0;
-        while (!isElementVisible(date9Jule, driver) && i < 30) {
+        while (!isElementVisible(date, driver) && i < 30) {
             driver.findElement(arrowRightAvailableDates).click();
             i++;
         }
-        driver.findElement(date9Jule).click();
+        driver.findElement(date).click();
         Logger.info("Date is selected");
         return new FilmsPage();
     }
