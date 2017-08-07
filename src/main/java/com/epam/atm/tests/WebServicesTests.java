@@ -2,7 +2,6 @@ package com.epam.atm.tests;
 
 import com.epam.atm.utils.Logger;
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -29,9 +28,6 @@ public class WebServicesTests {
 
     @Test
     public void checkResponseBody() {
-        Response resp = given().get("/users").andReturn();
-        RespBody[] respBody = resp.as(RespBody[].class);
-        System.out.println(respBody.toString());
-        Assert.assertEquals(respBody.length, 10);
+        Assert.assertEquals(given().get("/users").andReturn().as(RespBody[].class).length, 10);
     }
 }
