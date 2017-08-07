@@ -16,13 +16,13 @@ public class FilmsPage {
     WebDriver driver;
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
-    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 23 июля']");
+    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 19 августа']");
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
     private static final By byeTikets = By.xpath("//div[contains(text(),'Купить билеты')]");
     private static final By filmPicture = By.xpath("//img[contains(@src,'gadkiy-ya-3')]");
-    private static final By film = By.xpath("//a[contains(@href,'gadkiy_ya_3')][@class='name']");
+    private static final By film = By.xpath("//a[contains(@href,'valerian-i-gorod-tysyachi-planet')][@class='name']");
     private static final By areaForShots = By.xpath("//div[@class='fotorama__thumb-border']");
     private static final By anyPicture = By.xpath("//img[contains(@src, 'https://img.afisha.tut.by/img/138x72c/screens')]");
     public static final String SCROLL_JS = "arguments[0].scrollIntoView(true);";
