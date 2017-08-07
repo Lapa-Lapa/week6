@@ -4,12 +4,44 @@ import com.epam.atm.dataprovider.BankData;
 import com.epam.atm.dataprovider.ParserFromJSON;
 import com.epam.atm.driver.WebDriverSingleton;
 import com.epam.atm.pages.HomePage;
+import com.epam.atm.utils.Logger;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
+import static io.restassured.RestAssured.given;
+
 public class Tests {
+
+    @BeforeTest
+    public void initTest() {
+        RestAssured.baseURI = "https://afisha.tut.by";
+        Logger.info("Afisha page is open");
+    }
+
+    @Test
+    public void checkStatusCode() {
+        Assert.assertEquals(given().get("/film").andReturn().getStatusCode(), 200);
+    }
+
+    @Test
+    public void checkResponseHeader() {
+        Assert.assertTrue(given().get("/film").andReturn().getHeader("content-type").contains("text/html"));
+    }
+
+    @Test
+    public void checkResponseBody() {
+        Response resp = given().get("/film").andReturn();
+        Film[] films = resp.as(Film[].class);
+        //System.out.println(films.toString());
+        Assert.assertEquals(films.length, 100);
+    }
+
     @Test(description = "Афиша.tut.by", priority = 0)
     /**    ----Афиша.tut.by
      1) Пройти в афишу
