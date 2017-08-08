@@ -28,6 +28,6 @@ public class WebServicesTests {
 
     @Test
     public void checkResponseBody() {
-        Assert.assertEquals(given().get("/users").andReturn().as(RespBody[].class).length, 10);
+        Assert.assertEquals(given().get("/users").andReturn().as(User[].class).length, 10);
     }
 }

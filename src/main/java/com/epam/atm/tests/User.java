@@ -3,7 +3,7 @@ package com.epam.atm.tests;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RespBody {
+public class User {
     private Integer userId;
     private Integer id;
     private String title;
