@@ -4,11 +4,11 @@
         <meta charset="utf-8"/>
         <title>JSON</title>
     </head>
-    <body>
+    <username>
         <script>
             var info =
             {"SUM_OF_CREDIT": "3000",
             "BANK": "Беларусбанк"}
         </script>
-    </body>
+    </username>
 </html>

@@ -4,20 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    private Integer userId;
     private Integer id;
-    private String title;
-    private String body;
+    private String name;
+    private String username;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -26,20 +16,20 @@ public class User {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getUsername() {
+        return username;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Map<String, Object> getAdditionalProperties() {

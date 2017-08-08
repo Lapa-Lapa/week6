@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static io.restassured.RestAssured.given;
 
@@ -28,6 +29,14 @@ public class WebServicesTests {
 
     @Test
     public void checkResponseBody() {
-        Assert.assertEquals(given().get("/users").andReturn().as(User[].class).length, 10);
+        SoftAssert softAssert = new SoftAssert();
+        User[] users = given().get("/users").andReturn().as(User[].class);
+        for (int i = 0; i < users.length; i++) {
+            softAssert.assertNotNull(users[i].getId());
+            softAssert.assertFalse(users[i].getName().isEmpty());
+            softAssert.assertFalse(users[i].getUsername().isEmpty());
+        }
+        softAssert.assertEquals(users.length, 10);
+        softAssert.assertAll();
     }
 }
