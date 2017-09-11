@@ -1,13 +1,14 @@
 package com.epam.atm.pages;
 
 import com.epam.atm.driver.WebDriverSingleton;
-import com.epam.atm.utils.Logger;
+import com.epam.atm.utils.MyLogger;
 import com.epam.atm.utils.WorkWithFrames;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.AbstractPage.isElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
@@ -16,7 +17,7 @@ public class FilmsPage {
     WebDriver driver;
     private static final By FILMS = By.xpath("//a[contains(text(),'Кино')]");
     private static final By arrowRightAvailableDates = By.xpath("//i[@class='icon-right a-icon']");
-    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 23 июля']");
+    private static final By date9Jule = By.xpath("//a[@title='воскресенье, 17 сентября']");
     private static final By popupWindowCloseButton = By.id("closebtn");
     private static final By popupFrame = By.xpath("//iframe[contains(@src, 'https://api.traq.li/publisher/unattended')]");
     private static final By defaultTimeStartPosition = By.xpath("//div[@id='slider']/div/div[1]/div");
@@ -33,7 +34,8 @@ public class FilmsPage {
 
     public FilmsPage openFilms() {
         driver.findElement(FILMS).click();
-        Logger.info("Films page is open");
+        MyLogger.info("Films page is open");
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
@@ -44,7 +46,8 @@ public class FilmsPage {
             i++;
         }
         driver.findElement(date9Jule).click();
-        Logger.info("Date is selected");
+        MyLogger.info("Date is selected");
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
@@ -56,8 +59,9 @@ public class FilmsPage {
             WorkWithFrames.frameClose(driver, popupWindowCloseButton);
             WorkWithFrames.switchFromFrame(driver);
         } catch (Exception exception) {
-            Logger.error("Pop up window do not appear");
+            MyLogger.error("Pop up window do not appear");
         }
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
@@ -66,6 +70,7 @@ public class FilmsPage {
         jse.executeScript(SCROLL_JS, driver.findElement(byeTikets));
         Actions actions = new Actions(driver);
         waitSetTime(900);
+        MyLogger.trace("Mini waiting");
         if (TIME <= 17) {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47)), 0).click().release().perform();
         }
@@ -75,7 +80,8 @@ public class FilmsPage {
             actions.click(driver.findElement(defaultTimeStartPosition)).moveByOffset(((int) Math.round((TIME - 9) * 47.5) - 385), 0).click().release().perform();
         }
         waitSetTime(1500);
-        Logger.info("Time is selected");
+        MyLogger.info("Time is selected");
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
@@ -83,7 +89,8 @@ public class FilmsPage {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript(SCROLL_JS, driver.findElement(filmPicture));
         driver.findElement(film).click();
-        Logger.info("Film is selected");
+        MyLogger.info("Film is selected");
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
@@ -91,7 +98,8 @@ public class FilmsPage {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript(SCROLL_JS, driver.findElement(areaForShots));
         waitForElementVisible(areaForShots, driver);
-        Logger.info("Quantity of shots are get");
+        MyLogger.info("Quantity of shots are get");
+        takeScreenshot(driver);
         return driver.findElements(anyPicture).size();
     }
 }

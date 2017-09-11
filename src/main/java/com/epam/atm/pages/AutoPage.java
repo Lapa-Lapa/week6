@@ -1,7 +1,7 @@
 package com.epam.atm.pages;
 
 import com.epam.atm.driver.WebDriverSingleton;
-import com.epam.atm.utils.Logger;
+import com.epam.atm.utils.MyLogger;
 import com.epam.atm.utils.WorkWithFrames;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +10,9 @@ import java.awt.*;
 
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
+import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
+
+
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class AutoPage {
@@ -27,13 +30,13 @@ public class AutoPage {
 
     public AutoPage videoSectionOpen() {
         driver.findElement(videoSection).click();
-        Logger.info("Section video is open");
+        MyLogger.info("Section video is open");
         return new AutoPage();
     }
 
     public AutoPage postOpen() {
         driver.findElement(post).click();
-        Logger.info("Post is open");
+        MyLogger.info("Post is open");
         return new AutoPage();
     }
 
@@ -41,12 +44,13 @@ public class AutoPage {
         WorkWithFrames.switchToFrame(driver, frame);
         waitForElementVisible(playButton, driver);
         driver.findElement(playButton).click();
+        MyLogger.warn("Thread sllep for 20 seconds");
         waitSetTime(20000);
         driver.findElement(videoManagementTools).click();
         waitSetTime(500);
         waitForElementClicable(fullscreenButton, driver);
         driver.findElement(fullscreenButton).click();
-        Logger.info("Video full start");
+        MyLogger.info("Video full start");
         return new AutoPage();
     }
 
@@ -56,7 +60,10 @@ public class AutoPage {
         driver.switchTo().window(window);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double height = screenSize.getHeight();
+        takeScreenshot(driver);
         if (driver.findElement(By.xpath("//*[@id='article_body']/p[3]/iframe")).getSize().getHeight() >= (0.9 * height)) {
+            MyLogger.debug("Smth get wrong");
+
             return true;
         }
         return false;

@@ -1,13 +1,14 @@
 package com.epam.atm.pages;
 
 import com.epam.atm.driver.WebDriverSingleton;
-import com.epam.atm.utils.Logger;
+import com.epam.atm.utils.MyLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
@@ -29,17 +30,19 @@ public class FinancePage {
 
     public FinancePage pressChoseCreditButton() {
         driver.findElement(choseCreditButton).click();
-        Logger.info("Credits page is open");
+        MyLogger.info("Credits page is open");
+        takeScreenshot(driver);
         return new FinancePage();
     }
 
     public FinancePage popupWindowClose() {
         try {
             driver.findElement(popUpWindowClose).click();
-            Logger.info("Pop-up window closed");
+            MyLogger.info("Pop-up window closed");
         } catch (Exception exception) {
-            Logger.error("Pop-up window not appear");
+            MyLogger.error("Pop-up window not appear");
         }
+        takeScreenshot(driver);
         return new FinancePage();
     }
 
@@ -50,13 +53,15 @@ public class FinancePage {
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         bank.selectByVisibleText(BANK);
-        Logger.info("Bank is selected");
+        MyLogger.info("Bank is selected");
+        takeScreenshot(driver);
         return new FinancePage();
     }
 
     public FinancePage setSumOfCredit(int SUM_OF_CREDIT) {
         driver.findElement(sumOfCreditField).sendKeys(String.valueOf(SUM_OF_CREDIT));
-        Logger.info("Summ of credit is set");
+        MyLogger.info("Summ of credit is set");
+        takeScreenshot(driver);
         return new FinancePage();
     }
 
@@ -70,7 +75,8 @@ public class FinancePage {
         driver.findElement(sortByRateItem).click();//Desending
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
         String results = driver.findElement(thehighestRate).getText();
-        Logger.info("Results of test were collected");
+        MyLogger.info("Results of test were collected");
+        takeScreenshot(driver);
         return Double.parseDouble(results.substring(0, 2));
     }
 }

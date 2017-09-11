@@ -1,15 +1,19 @@
 package com.epam.atm.waiters;
 
 import com.epam.atm.driver.WebDriverSingleton;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import com.epam.atm.utils.MyLogger;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+
 public class AbstractPage {
     private static final int WAIT_FOR_ELEMENT_TIMEOUT_SECONDS = 35;
+
     WebDriver driver;
 
     protected AbstractPage() {
@@ -63,4 +67,5 @@ public class AbstractPage {
     protected void waitForAjaxProcessed() {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_TIMEOUT_SECONDS).until(isAjaxFinished());
     }
+
 }

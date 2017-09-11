@@ -1,0 +1,474 @@
+10:50:03 INFO  MyLogger.info - Manage decorator
+10:50:03 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+10:50:03 INFO  MyLogger.info - Manage decorator
+10:50:03 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+10:50:03 INFO  MyLogger.info - Manage decorator
+10:50:03 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+10:50:03 INFO  MyLogger.info - Manage decorator
+10:50:16 INFO  MyLogger.info - https://www.tut.by
+10:50:16 INFO  MyLogger.info - Home page is open
+10:50:17 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=50049'
+10:50:17 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=50049'
+10:50:17 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=50049'
+10:50:23 INFO  MyLogger.info - Afisha page is open
+10:50:23 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Кино')], current URL: 'https://afisha.tut.by/'
+10:50:27 INFO  MyLogger.info - Films page is open
+10:50:27 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 23 июля'], current URL: 'https://afisha.tut.by/film/'
+10:50:52 INFO  MyLogger.info - Browser will be closed now...
+11:00:32 INFO  MyLogger.info - Manage decorator
+11:00:32 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+11:00:32 INFO  MyLogger.info - Manage decorator
+11:00:32 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+11:00:32 INFO  MyLogger.info - Manage decorator
+11:00:32 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+11:00:32 INFO  MyLogger.info - Manage decorator
+11:00:41 INFO  MyLogger.info - https://www.tut.by
+11:00:41 INFO  MyLogger.info - Home page is open
+11:00:41 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=32241'
+11:00:41 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=32241'
+11:00:42 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=32241'
+11:00:58 INFO  MyLogger.info - Afisha page is open
+11:00:58 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Кино')], current URL: 'https://afisha.tut.by/'
+11:01:02 INFO  MyLogger.info - Films page is open
+11:01:02 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 23 июля'], current URL: 'https://afisha.tut.by/film/'
+11:01:27 INFO  MyLogger.info - Browser will be closed now...
+11:02:27 INFO  MyLogger.info - Manage decorator
+11:02:27 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+11:02:27 INFO  MyLogger.info - Manage decorator
+11:02:27 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+11:02:27 INFO  MyLogger.info - Manage decorator
+11:02:27 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+11:02:27 INFO  MyLogger.info - Manage decorator
+11:02:38 INFO  MyLogger.info - https://www.tut.by
+11:02:38 INFO  MyLogger.info - Home page is open
+11:02:38 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=12429'
+11:02:39 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=12429'
+11:02:39 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=12429'
+11:02:46 INFO  MyLogger.info - Afisha page is open
+11:02:46 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Кино')], current URL: 'https://afisha.tut.by/'
+11:02:51 INFO  MyLogger.info - Films page is open
+11:02:51 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 17 сентября'], current URL: 'https://afisha.tut.by/film/'
+11:02:51 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 17 сентября'], current URL: 'https://afisha.tut.by/film/'
+11:02:56 INFO  MyLogger.info - Date is selected
+11:02:59 INFO  MyLogger.info - Swich to decorator
+11:02:59 INFO  MyLogger.info - Finding element: By.xpath: //iframe[contains(@src, 'https://api.traq.li/publisher/unattended')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:02:59 INFO  MyLogger.info - Switch to frame
+11:02:59 INFO  MyLogger.info - Finding element: By.id: closebtn, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:02:59 INFO  MyLogger.info - Pop up window closed
+11:02:59 INFO  MyLogger.info - Swich to decorator
+11:02:59 INFO  MyLogger.info - Switch from frame to window
+11:02:59 INFO  MyLogger.info - Finding element: By.xpath: //div[contains(text(),'Купить билеты')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:03:00 INFO  MyLogger.info - Finding element: By.xpath: //div[@id='slider']/div/div[1]/div, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:03:01 INFO  MyLogger.info - Finding element: By.xpath: //div[@id='slider']/div/div[1]/div, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:03:03 INFO  MyLogger.info - Time is selected
+11:03:03 INFO  MyLogger.info - Finding element: By.xpath: //img[contains(@src,'gadkiy-ya-3')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:03:28 INFO  MyLogger.info - Browser will be closed now...
+11:07:00 INFO  MyLogger.info - Manage decorator
+11:07:00 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+11:07:00 INFO  MyLogger.info - Manage decorator
+11:07:00 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+11:07:00 INFO  MyLogger.info - Manage decorator
+11:07:00 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+11:07:00 INFO  MyLogger.info - Manage decorator
+11:07:10 INFO  MyLogger.info - https://www.tut.by
+11:07:10 INFO  MyLogger.info - Home page is open
+11:07:11 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=88339'
+11:07:11 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=88339'
+11:07:11 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Афиша')], current URL: 'https://www.tut.by/?crnd=88339'
+11:07:15 INFO  MyLogger.info - Afisha page is open
+11:07:15 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Кино')], current URL: 'https://afisha.tut.by/'
+11:07:19 INFO  MyLogger.info - Films page is open
+11:07:19 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 17 сентября'], current URL: 'https://afisha.tut.by/film/'
+11:07:19 INFO  MyLogger.info - Finding element: By.xpath: //a[@title='воскресенье, 17 сентября'], current URL: 'https://afisha.tut.by/film/'
+11:07:22 INFO  MyLogger.info - Date is selected
+11:07:25 INFO  MyLogger.info - Swich to decorator
+11:07:25 INFO  MyLogger.info - Finding element: By.xpath: //iframe[contains(@src, 'https://api.traq.li/publisher/unattended')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:25 INFO  MyLogger.info - Switch to frame
+11:07:25 INFO  MyLogger.info - Finding element: By.id: closebtn, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:26 INFO  MyLogger.info - Pop up window closed
+11:07:26 INFO  MyLogger.info - Swich to decorator
+11:07:26 INFO  MyLogger.info - Switch from frame to window
+11:07:26 INFO  MyLogger.info - Finding element: By.xpath: //div[contains(text(),'Купить билеты')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:27 INFO  MyLogger.info - Finding element: By.xpath: //div[@id='slider']/div/div[1]/div, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:28 INFO  MyLogger.info - Finding element: By.xpath: //div[@id='slider']/div/div[1]/div, current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:29 INFO  MyLogger.info - Time is selected
+11:07:29 INFO  MyLogger.info - Finding element: By.xpath: //img[contains(@src,'gadkiy-ya-3')], current URL: 'https://afisha.tut.by/day/film/2017/09/17/'
+11:07:55 INFO  MyLogger.info - Browser will be closed now...
+11:11:34 INFO  MyLogger.info - Manage decorator
+11:11:34 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+11:11:34 INFO  MyLogger.info - Manage decorator
+11:11:34 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+11:11:34 INFO  MyLogger.info - Manage decorator
+11:11:34 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+11:11:34 INFO  MyLogger.info - Manage decorator
+11:11:44 INFO  MyLogger.info - https://www.tut.by
+11:11:44 INFO  MyLogger.info - Home page is open
+11:11:45 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:45 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:45 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:46 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:46 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:46 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=72530'
+11:11:47 INFO  MyLogger.info - Manage decorator
+11:11:47 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+11:11:47 INFO  MyLogger.info - Manage decorator
+11:11:47 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+11:11:47 INFO  MyLogger.info - Manage decorator
+11:11:47 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+11:11:47 INFO  MyLogger.info - Manage decorator
+11:11:52 INFO  MyLogger.info - Finance page is open
+11:11:52 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'http://finance.tut.by/'
+11:11:59 INFO  MyLogger.info - https://www.tut.by
+11:11:59 INFO  MyLogger.info - Home page is open
+11:11:59 INFO  MyLogger.info - Afisha visible
+11:12:00 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=30618'
+11:12:00 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=30618'
+11:12:00 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=30618'
+11:12:00 INFO  MyLogger.info - Credits page is open
+11:12:00 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:00 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=30618'
+11:12:01 INFO  MyLogger.info - Browser will be closed now...
+11:12:25 ERROR MyLogger.error - Pop-up window not appear
+11:12:26 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:26 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:26 INFO  MyLogger.info - Bank is selected
+11:12:26 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:26 INFO  MyLogger.info - Summ of credit is set
+11:12:26 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:29 INFO  MyLogger.info - https://www.tut.by
+11:12:29 INFO  MyLogger.info - Home page is open
+11:12:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:12:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:12:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:12:30 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:12:30 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:12:30 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:12:32 INFO  MyLogger.info - Finance page is open
+11:12:32 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+11:12:34 INFO  MyLogger.info - Credits page is open
+11:12:34 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:12:59 ERROR MyLogger.error - Pop-up window not appear
+11:13:00 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:00 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:00 INFO  MyLogger.info - Bank is selected
+11:13:00 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:00 INFO  MyLogger.info - Summ of credit is set
+11:13:00 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:02 INFO  MyLogger.info - https://www.tut.by
+11:13:02 INFO  MyLogger.info - Home page is open
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:13:03 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+11:13:05 INFO  MyLogger.info - Finance page is open
+11:13:05 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+11:13:07 INFO  MyLogger.info - Credits page is open
+11:13:07 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:32 ERROR MyLogger.error - Pop-up window not appear
+11:13:32 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:32 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:33 INFO  MyLogger.info - Bank is selected
+11:13:33 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:33 INFO  MyLogger.info - Summ of credit is set
+11:13:33 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+11:13:33 INFO  MyLogger.info - Browser will be closed now...
+05:06:06 INFO  MyLogger.info - Manage decorator
+05:06:06 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+05:06:06 INFO  MyLogger.info - Manage decorator
+05:06:06 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+05:06:06 INFO  MyLogger.info - Manage decorator
+05:06:06 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+05:06:06 INFO  MyLogger.info - Manage decorator
+05:06:15 INFO  MyLogger.info - https://www.tut.by
+05:06:15 INFO  MyLogger.info - Home page is open
+05:06:15 INFO  MyLogger.info - Afisha visible
+05:06:15 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=89658'
+05:06:15 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=89658'
+05:06:15 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=89658'
+05:06:15 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Мобильная версия')], current URL: 'https://www.tut.by/?crnd=89658'
+05:06:16 INFO  MyLogger.info - Browser will be closed now...
+05:54:56 INFO  MyLogger.info - Manage decorator
+05:54:56 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+05:54:56 INFO  MyLogger.info - Manage decorator
+05:54:56 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+05:54:56 INFO  MyLogger.info - Manage decorator
+05:54:56 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+05:54:56 INFO  MyLogger.info - Manage decorator
+05:55:06 INFO  MyLogger.info - https://www.tut.by
+05:55:06 INFO  MyLogger.info - Home page is open
+05:55:08 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:08 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:08 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=64614'
+05:55:14 INFO  MyLogger.info - Finance page is open
+05:55:14 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'http://finance.tut.by/'
+05:55:19 INFO  MyLogger.info - Credits page is open
+05:55:19 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:55:44 ERROR MyLogger.error - Pop-up window not appear
+05:55:44 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:55:44 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:55:45 INFO  MyLogger.info - Bank is selected
+05:55:45 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:55:45 INFO  MyLogger.info - Summ of credit is set
+05:55:45 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:55:48 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3%20000&srok_type=m&bank[]=7'
+05:55:48 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3%20000&srok_type=m&bank[]=7'
+05:55:55 INFO  MyLogger.info - https://www.tut.by
+05:55:55 INFO  MyLogger.info - Home page is open
+05:55:55 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:55:55 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:55:55 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:55:56 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:55:56 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:55:57 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:56:12 INFO  MyLogger.info - Finance page is open
+05:56:12 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+05:56:30 INFO  MyLogger.info - Credits page is open
+05:56:30 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:56:55 ERROR MyLogger.error - Pop-up window not appear
+05:56:56 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:01 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:01 INFO  MyLogger.info - Bank is selected
+05:57:01 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:02 INFO  MyLogger.info - Summ of credit is set
+05:57:02 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:05 INFO  MyLogger.info - https://www.tut.by
+05:57:05 INFO  MyLogger.info - Home page is open
+05:57:05 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:57:05 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:57:05 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+05:57:10 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:57:10 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:57:10 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+05:57:18 INFO  MyLogger.info - Finance page is open
+05:57:18 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+05:57:25 INFO  MyLogger.info - Credits page is open
+05:57:25 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:50 ERROR MyLogger.error - Pop-up window not appear
+05:57:51 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:51 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+05:57:51 INFO  MyLogger.info - Browser will be closed now...
+06:16:19 INFO  MyLogger.info - Manage decorator
+06:16:19 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+06:16:19 INFO  MyLogger.info - Manage decorator
+06:16:19 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+06:16:19 INFO  MyLogger.info - Manage decorator
+06:16:19 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+06:16:19 INFO  MyLogger.info - Manage decorator
+06:16:32 INFO  MyLogger.info - https://www.tut.by
+06:16:32 INFO  MyLogger.info - Home page is open
+06:16:36 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:36 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:36 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:38 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:38 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:38 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=16057'
+06:16:59 INFO  MyLogger.info - Finance page is open
+06:16:59 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'http://finance.tut.by/'
+06:17:12 INFO  MyLogger.info - Credits page is open
+06:17:12 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:17:37 ERROR MyLogger.error - Pop-up window not appear
+06:17:37 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:17:38 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:17:38 INFO  MyLogger.info - Bank is selected
+06:17:38 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:17:38 INFO  MyLogger.info - Summ of credit is set
+06:17:38 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:17:43 INFO  MyLogger.info - https://www.tut.by
+06:17:43 INFO  MyLogger.info - Home page is open
+06:17:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:17:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:17:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:17:44 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:17:45 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:17:45 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:17:49 INFO  MyLogger.info - Finance page is open
+06:17:49 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+06:17:52 INFO  MyLogger.info - Credits page is open
+06:17:52 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:18:17 ERROR MyLogger.error - Pop-up window not appear
+06:18:18 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:18:18 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:26:40 INFO  MyLogger.info - Manage decorator
+06:26:40 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+06:26:40 INFO  MyLogger.info - Manage decorator
+06:26:40 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+06:26:40 INFO  MyLogger.info - Manage decorator
+06:26:40 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+06:26:40 INFO  MyLogger.info - Manage decorator
+06:26:47 INFO  MyLogger.info - https://www.tut.by
+06:26:47 INFO  MyLogger.info - Home page is open
+06:26:47 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:48 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:48 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:49 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:49 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:49 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=77954'
+06:26:52 INFO  MyLogger.info - Finance page is open
+06:26:52 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'http://finance.tut.by/'
+06:26:59 INFO  MyLogger.info - Credits page is open
+06:26:59 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:24 ERROR MyLogger.error - Pop-up window not appear
+06:27:24 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:24 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:25 INFO  MyLogger.info - Bank is selected
+06:27:25 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:25 INFO  MyLogger.info - Summ of credit is set
+06:27:25 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:28 INFO  MyLogger.info - https://www.tut.by
+06:27:28 INFO  MyLogger.info - Home page is open
+06:27:28 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:27:28 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:27:28 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:27:28 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:27:29 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:27:29 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:27:31 INFO  MyLogger.info - Finance page is open
+06:27:31 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+06:27:33 INFO  MyLogger.info - Credits page is open
+06:27:33 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:58 ERROR MyLogger.error - Pop-up window not appear
+06:27:58 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:59 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:59 INFO  MyLogger.info - Bank is selected
+06:27:59 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:27:59 INFO  MyLogger.info - Summ of credit is set
+06:27:59 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:02 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3%20000&srok_type=m&bank[]=8'
+06:28:02 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3%20000&srok_type=m&bank[]=8'
+06:28:04 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3+000&srok_type=m&bank%5B0%5D=8&sortDirProc=up'
+06:28:04 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3+000&srok_type=m&bank%5B0%5D=8&sortDirProc=up'
+06:28:06 INFO  MyLogger.info - Finding element: By.xpath: //span[contains(text(),'Ставка')], current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3+000&srok_type=m&bank%5B0%5D=8&sortDirProc=down'
+06:28:07 INFO  MyLogger.info - Finding element: By.xpath: //div[@class='wrapper']/big, current URL: 'https://finance.tut.by/credits/potrebitelskij/?sum=3+000&srok_type=m&bank%5B0%5D=8&sortDirProc=down'
+06:28:07 INFO  MyLogger.info - Results of test were collected
+06:28:09 INFO  MyLogger.info - https://www.tut.by
+06:28:09 INFO  MyLogger.info - Home page is open
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:28:09 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+06:28:12 INFO  MyLogger.info - Finance page is open
+06:28:12 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+06:28:14 INFO  MyLogger.info - Credits page is open
+06:28:14 INFO  MyLogger.info - Finding element: By.className: scrollable-close, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:39 ERROR MyLogger.error - Pop-up window not appear
+06:28:39 INFO  MyLogger.info - Finding element: By.id: show_full_filter, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:39 INFO  MyLogger.info - Finding element: By.xpath: //select[@id='bank_list'], current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:39 INFO  MyLogger.info - Bank is selected
+06:28:39 INFO  MyLogger.info - Finding element: By.name: sum, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:40 INFO  MyLogger.info - Summ of credit is set
+06:28:40 INFO  MyLogger.info - Finding element: By.name: submit, current URL: 'https://finance.tut.by/credits/potrebitelskij/'
+06:28:40 INFO  MyLogger.info - Browser will be closed now...
+07:03:17 INFO  MyLogger.info - Manage decorator
+07:03:17 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+07:03:17 INFO  MyLogger.info - Manage decorator
+07:03:17 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+07:03:17 INFO  MyLogger.info - Manage decorator
+07:03:17 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+07:03:17 INFO  MyLogger.info - Manage decorator
+07:03:28 INFO  MyLogger.info - https://www.tut.by
+07:03:28 INFO  MyLogger.info - Home page is open
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:29 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/?crnd=43637'
+07:03:37 INFO  MyLogger.info - Finance page is open
+07:03:37 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'http://finance.tut.by/'
+07:03:41 INFO  MyLogger.info - Credits page is open
+07:03:43 INFO  MyLogger.info - https://www.tut.by
+07:03:43 INFO  MyLogger.info - Home page is open
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:44 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:46 INFO  MyLogger.info - Finance page is open
+07:03:46 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+07:03:49 INFO  MyLogger.info - Credits page is open
+07:03:51 INFO  MyLogger.info - https://www.tut.by
+07:03:51 INFO  MyLogger.info - Home page is open
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //a[contains(text(),'Разделы')], current URL: 'https://www.tut.by/'
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:51 INFO  MyLogger.info - Finding element: By.xpath: //ul[@class='b-topbar-more-list']/li[4], current URL: 'https://www.tut.by/'
+07:03:54 INFO  MyLogger.info - Finance page is open
+07:03:54 INFO  MyLogger.info - Finding element: By.xpath: //a[@class='button flat-white'], current URL: 'https://finance.tut.by/'
+07:03:56 INFO  MyLogger.info - Credits page is open
+07:03:56 INFO  MyLogger.info - Browser will be closed now...
+07:05:43 INFO  MyLogger.info - Manage decorator
+07:05:43 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+07:05:43 INFO  MyLogger.info - Manage decorator
+07:05:43 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+07:05:43 INFO  MyLogger.info - Manage decorator
+07:05:43 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+07:05:43 INFO  MyLogger.info - Manage decorator
+07:06:00 INFO  MyLogger.info - https://www.tut.by
+07:06:00 INFO  MyLogger.info - Home page is open
+07:06:04 INFO  MyLogger.info - https://www.tut.by
+07:06:04 INFO  MyLogger.info - Home page is open
+07:06:08 INFO  MyLogger.info - https://www.tut.by
+07:06:08 INFO  MyLogger.info - Home page is open
+07:06:08 INFO  MyLogger.info - Browser will be closed now...
+07:06:56 INFO  MyLogger.info - Manage decorator
+07:06:56 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+07:06:56 INFO  MyLogger.info - Manage decorator
+07:06:56 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+07:06:56 INFO  MyLogger.info - Manage decorator
+07:06:56 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+07:06:56 INFO  MyLogger.info - Manage decorator
+07:07:04 INFO  MyLogger.info - https://www.tut.by
+07:07:13 INFO  MyLogger.info - https://www.tut.by
+07:07:21 INFO  MyLogger.info - https://www.tut.by
+07:07:21 INFO  MyLogger.info - Browser will be closed now...
+07:11:49 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+07:11:49 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+07:11:49 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+07:11:59 INFO  MyLogger.info - Saved screenshot: screenshots/scr368582104527953
+07:11:59 INFO  MyLogger.info - Home page is open
+07:12:06 INFO  MyLogger.info - Finance page is open
+07:12:07 INFO  MyLogger.info - Saved screenshot: screenshots/scr368590232039296
+07:12:10 INFO  MyLogger.info - Credits page is open
+07:12:10 INFO  MyLogger.info - Saved screenshot: screenshots/scr368593859217710
+07:12:35 ERROR MyLogger.error - Pop-up window not appear
+07:12:36 INFO  MyLogger.info - Saved screenshot: screenshots/scr368619571486793
+07:12:37 INFO  MyLogger.info - Bank is selected
+07:12:37 INFO  MyLogger.info - Saved screenshot: screenshots/scr368620986144877
+07:12:37 INFO  MyLogger.info - Summ of credit is set
+07:12:38 INFO  MyLogger.info - Saved screenshot: screenshots/scr368621621282353
+07:12:46 INFO  MyLogger.info - Results of test were collected
+07:12:46 INFO  MyLogger.info - Saved screenshot: screenshots/scr368630070969546
+07:12:51 INFO  MyLogger.info - Saved screenshot: screenshots/scr368634729930750
+07:12:51 INFO  MyLogger.info - Home page is open
+07:12:55 INFO  MyLogger.info - Finance page is open
+07:12:55 INFO  MyLogger.info - Saved screenshot: screenshots/scr368639107507416
+07:13:05 INFO  MyLogger.info - Credits page is open
+07:13:05 INFO  MyLogger.info - Saved screenshot: screenshots/scr368649098354346
+07:13:30 ERROR MyLogger.error - Pop-up window not appear
+07:13:31 INFO  MyLogger.info - Saved screenshot: screenshots/scr368674813055495
+07:13:32 INFO  MyLogger.info - Bank is selected
+07:13:33 INFO  MyLogger.info - Saved screenshot: screenshots/scr368676388169646
+07:13:33 INFO  MyLogger.info - Summ of credit is set
+07:13:34 INFO  MyLogger.info - Saved screenshot: screenshots/scr368677371852522
+07:13:38 INFO  MyLogger.info - Saved screenshot: screenshots/scr368681660386145
+07:13:38 INFO  MyLogger.info - Home page is open
+07:13:42 INFO  MyLogger.info - Finance page is open
+07:13:43 INFO  MyLogger.info - Saved screenshot: screenshots/scr368686508128626
+07:13:46 INFO  MyLogger.info - Credits page is open
+07:13:46 INFO  MyLogger.info - Saved screenshot: screenshots/scr368689975871782
+07:14:11 ERROR MyLogger.error - Pop-up window not appear
+07:14:12 INFO  MyLogger.info - Saved screenshot: screenshots/scr368715652088810
+07:14:13 INFO  MyLogger.info - Bank is selected
+07:14:14 INFO  MyLogger.info - Saved screenshot: screenshots/scr368717125615553
+07:14:14 INFO  MyLogger.info - Summ of credit is set
+07:14:14 INFO  MyLogger.info - Saved screenshot: screenshots/scr368717955825946

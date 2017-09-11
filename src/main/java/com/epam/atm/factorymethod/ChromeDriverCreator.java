@@ -1,6 +1,5 @@
 package com.epam.atm.factorymethod;
 
-import com.epam.atm.webdriverdecorator.CustomDriverDecorator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -19,7 +18,7 @@ public class ChromeDriverCreator extends WebDriverCreator {
             e.printStackTrace();
         }
         driver = new ChromeDriver(service);
-        driver = new CustomDriverDecorator(driver);
+        //driver = new CustomDriverDecorator(driver);
         return driver;
     }
 }

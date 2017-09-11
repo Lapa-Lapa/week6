@@ -1,7 +1,7 @@
 package com.epam.atm.pages;
 
 import com.epam.atm.driver.WebDriverSingleton;
-import com.epam.atm.utils.Logger;
+import com.epam.atm.utils.MyLogger;
 import com.epam.atm.waiters.HighlitersUnhighliters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import static com.epam.atm.waiters.AbstractPage.isElementVisible;
+import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
@@ -31,26 +32,30 @@ public class HomePage {
 
     public HomePage open() {
         driver.get(URL);
-        Logger.info("Home page is open");
+        takeScreenshot(driver);
+        MyLogger.info("Home page is open");
+
         return this;
     }
 
     public FilmsPage afishaOpen() {
         HighlitersUnhighliters.highlightUnhighlightClickElement(AFISHA, driver);
-        Logger.info("Afisha page is open");
+        MyLogger.info("Afisha page is open");
+        takeScreenshot(driver);
         return new FilmsPage();
     }
 
     public FinancePage financeOpen() {
         HighlitersUnhighliters.highlightUnhighlightClickElement(SECTION, driver);
         HighlitersUnhighliters.highlightUnhighlightClickElement(FINANCE, driver);
-        Logger.info("Finance page is open");
+        MyLogger.info("Finance page is open");
+        takeScreenshot(driver);
         return new FinancePage();
     }
 
     public HomePage mobileVersionEnable() {
         waitForElementVisible(AFISHA, driver);
-        Logger.info("Afisha visible");
+        MyLogger.info("Afisha visible");
         int i = 0;
         Actions actions = new Actions(driver);
         while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK, driver)) {
@@ -58,7 +63,8 @@ public class HomePage {
             waitForElementVisible(MOBILE_VERSION_ENABLE_LINK, driver);
         }
         HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK, driver);
-        Logger.info("Mobile version enabled");
+        MyLogger.info("Mobile version enabled");
+        takeScreenshot(driver);
         return new HomePage();
     }
 
@@ -71,7 +77,8 @@ public class HomePage {
         HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_SECTION, driver);
         HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS, driver);
         HighlitersUnhighliters.highlightUnhighlightClickElement(AUTO, driver);
-        Logger.info("Auto page is open");
+        MyLogger.info("Auto page is open");
+        takeScreenshot(driver);
         return new AutoPage();
     }
 }

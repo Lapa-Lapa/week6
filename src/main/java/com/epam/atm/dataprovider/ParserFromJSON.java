@@ -1,6 +1,6 @@
 package com.epam.atm.dataprovider;
 
-import com.epam.atm.utils.Logger;
+import com.epam.atm.utils.MyLogger;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +24,7 @@ public class ParserFromJSON {
                 BANKDATA = BANKDATA + scanner.next();
             }
         } catch (Exception exception) {
-            Logger.error("File is not found or it's content can not be read");
+            MyLogger.error("File is not found or it's content can not be read");
         }
         System.out.println(BANKDATA);
         list = new Gson().fromJson(BANKDATA, itemsArrType);
