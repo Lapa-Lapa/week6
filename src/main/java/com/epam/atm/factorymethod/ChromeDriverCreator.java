@@ -18,7 +18,6 @@ public class ChromeDriverCreator extends WebDriverCreator {
             e.printStackTrace();
         }
         driver = new ChromeDriver(service);
-        //driver = new CustomDriverDecorator(driver);
         return driver;
     }
 }

@@ -8,11 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 import java.awt.*;
 
-import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementClicable;
-import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
-import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 
-
+import static com.epam.atm.waiters.HighlitersUnhighliters.*;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
 
 public class AutoPage {
@@ -29,27 +26,25 @@ public class AutoPage {
     }
 
     public AutoPage videoSectionOpen() {
-        driver.findElement(videoSection).click();
+        highlightClickUnhighlightElement(videoSection, driver);
         MyLogger.info("Section video is open");
         return new AutoPage();
     }
 
     public AutoPage postOpen() {
-        driver.findElement(post).click();
+        highlightClickUnhighlightElement(post,driver);
         MyLogger.info("Post is open");
         return new AutoPage();
     }
 
     public AutoPage videoPlayButtonPressAndFullSize() {
         WorkWithFrames.switchToFrame(driver, frame);
-        waitForElementVisible(playButton, driver);
-        driver.findElement(playButton).click();
+        highlightClickUnhighlightElement(playButton, driver);
         MyLogger.warn("Thread sllep for 20 seconds");
         waitSetTime(20000);
-        driver.findElement(videoManagementTools).click();
+        highlightClickUnhighlightElement(videoManagementTools, driver);
         waitSetTime(500);
-        waitForElementClicable(fullscreenButton, driver);
-        driver.findElement(fullscreenButton).click();
+        highlightClickUnhighlightElement(fullscreenButton, driver);
         MyLogger.info("Video full start");
         return new AutoPage();
     }

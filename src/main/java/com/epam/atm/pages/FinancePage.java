@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.epam.atm.waiters.HighlitersUnhighliters.highlightClickUnhighlightElement;
 import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.ThreadSleep.waitSetTime;
@@ -29,7 +30,7 @@ public class FinancePage {
     }
 
     public FinancePage pressChoseCreditButton() {
-        driver.findElement(choseCreditButton).click();
+        highlightClickUnhighlightElement(choseCreditButton,driver);
         MyLogger.info("Credits page is open");
         takeScreenshot(driver);
         return new FinancePage();
@@ -37,7 +38,7 @@ public class FinancePage {
 
     public FinancePage popupWindowClose() {
         try {
-            driver.findElement(popUpWindowClose).click();
+            highlightClickUnhighlightElement(popUpWindowClose,driver);
             MyLogger.info("Pop-up window closed");
         } catch (Exception exception) {
             MyLogger.error("Pop-up window not appear");
@@ -49,7 +50,7 @@ public class FinancePage {
     public FinancePage setBankAsOptionForCredit(String BANK) {
         waitSetTime(500);
         waitForElementVisible(additionalOptionsForCredit, driver);
-        driver.findElement(additionalOptionsForCredit).click();
+        highlightClickUnhighlightElement(additionalOptionsForCredit,driver);
         WebElement dropdown = driver.findElement(bankThatGiveCreditList);
         Select bank = new Select(dropdown);
         bank.selectByVisibleText(BANK);
@@ -67,12 +68,12 @@ public class FinancePage {
 
     public Double getResults() {
         waitForElementVisible(tableWithResults, driver);
-        driver.findElement(submitButton).click();
+        highlightClickUnhighlightElement(submitButton,driver);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
-        driver.findElement(sortByRateItem).click();//Assending
+        highlightClickUnhighlightElement(sortByRateItem,driver);
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
-        driver.findElement(sortByRateItem).click();//Desending
+        highlightClickUnhighlightElement(sortByRateItem,driver);
         jse.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(sortByRateItem));
         String results = driver.findElement(thehighestRate).getText();
         MyLogger.info("Results of test were collected");

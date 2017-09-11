@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import static com.epam.atm.waiters.HighlitersUnhighliters.highlightClickUnhighlightElement;
 import static com.epam.atm.waiters.HighlitersUnhighliters.takeScreenshot;
 import static com.epam.atm.waiters.HighlitersUnhighliters.waitForElementVisible;
 import static com.epam.atm.waiters.AbstractPage.isElementVisible;
@@ -33,7 +34,7 @@ public class FilmsPage {
     }
 
     public FilmsPage openFilms() {
-        driver.findElement(FILMS).click();
+        highlightClickUnhighlightElement(FILMS,driver);
         MyLogger.info("Films page is open");
         takeScreenshot(driver);
         return new FilmsPage();
@@ -42,10 +43,10 @@ public class FilmsPage {
     public FilmsPage selectDate() {
         int i = 0;
         while (!isElementVisible(date9Jule, driver) && i < 30) {
-            driver.findElement(arrowRightAvailableDates).click();
+            highlightClickUnhighlightElement(arrowRightAvailableDates,driver);
             i++;
         }
-        driver.findElement(date9Jule).click();
+        highlightClickUnhighlightElement(date9Jule,driver);
         MyLogger.info("Date is selected");
         takeScreenshot(driver);
         return new FilmsPage();
@@ -88,7 +89,7 @@ public class FilmsPage {
     public FilmsPage selectFilm() {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript(SCROLL_JS, driver.findElement(filmPicture));
-        driver.findElement(film).click();
+        highlightClickUnhighlightElement(film,driver);
         MyLogger.info("Film is selected");
         takeScreenshot(driver);
         return new FilmsPage();

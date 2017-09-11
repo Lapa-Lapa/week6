@@ -39,15 +39,15 @@ public class HomePage {
     }
 
     public FilmsPage afishaOpen() {
-        HighlitersUnhighliters.highlightUnhighlightClickElement(AFISHA, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(AFISHA, driver);
         MyLogger.info("Afisha page is open");
         takeScreenshot(driver);
         return new FilmsPage();
     }
 
     public FinancePage financeOpen() {
-        HighlitersUnhighliters.highlightUnhighlightClickElement(SECTION, driver);
-        HighlitersUnhighliters.highlightUnhighlightClickElement(FINANCE, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(SECTION, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(FINANCE, driver);
         MyLogger.info("Finance page is open");
         takeScreenshot(driver);
         return new FinancePage();
@@ -56,13 +56,11 @@ public class HomePage {
     public HomePage mobileVersionEnable() {
         waitForElementVisible(AFISHA, driver);
         MyLogger.info("Afisha visible");
-        int i = 0;
-        Actions actions = new Actions(driver);
         while (!isElementVisible(MOBILE_VERSION_ENABLE_LINK, driver)) {
             driver.findElement(AFISHA).sendKeys(Keys.SPACE);
             waitForElementVisible(MOBILE_VERSION_ENABLE_LINK, driver);
         }
-        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_VERSION_ENABLE_LINK, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(MOBILE_VERSION_ENABLE_LINK, driver);
         MyLogger.info("Mobile version enabled");
         takeScreenshot(driver);
         return new HomePage();
@@ -71,12 +69,12 @@ public class HomePage {
     public AutoPage autoOpen() {
         waitSetTime(2000);
         driver.switchTo().frame(driver.findElement(POPUP_FRAME));
-        HighlitersUnhighliters.highlightUnhighlightClickElement(POPUP_WINDOW_CLOSE_BUTTON, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(POPUP_WINDOW_CLOSE_BUTTON, driver);
         String window = driver.getWindowHandle();
         driver.switchTo().window(window);
-        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_SECTION, driver);
-        HighlitersUnhighliters.highlightUnhighlightClickElement(MOBILE_MORE_SECTIONS, driver);
-        HighlitersUnhighliters.highlightUnhighlightClickElement(AUTO, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(MOBILE_SECTION, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(MOBILE_MORE_SECTIONS, driver);
+        HighlitersUnhighliters.highlightClickUnhighlightElement(AUTO, driver);
         MyLogger.info("Auto page is open");
         takeScreenshot(driver);
         return new AutoPage();

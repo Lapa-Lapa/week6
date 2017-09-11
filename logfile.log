@@ -472,3 +472,17 @@
 07:14:14 INFO  MyLogger.info - Saved screenshot: screenshots/scr368717125615553
 07:14:14 INFO  MyLogger.info - Summ of credit is set
 07:14:14 INFO  MyLogger.info - Saved screenshot: screenshots/scr368717955825946
+22:32:52 INFO  MyLogger.info - РageLoadTimeout set: 25 seconds
+22:32:52 INFO  MyLogger.info - ImplicitlyWait set: 25 seconds
+22:32:52 INFO  MyLogger.info - ScroptTimeout set: 25 seconds
+22:33:02 INFO  MyLogger.info - Saved screenshot: screenshots/scr423853661278658
+22:33:02 INFO  MyLogger.info - Home page is open
+22:33:14 INFO  MyLogger.info - Saved screenshot: screenshots/scr423865533627901
+22:33:14 INFO  MyLogger.info - Home page is open
+22:33:17 INFO  MyLogger.info - Saved screenshot: screenshots/scr423868932362730
+22:33:17 INFO  MyLogger.info - Home page is open
+22:33:20 INFO  MyLogger.info - Saved screenshot: screenshots/scr423872027019583
+22:33:20 INFO  MyLogger.info - Home page is open
+22:33:23 INFO  MyLogger.info - Saved screenshot: screenshots/scr423874489880646
+22:33:23 INFO  MyLogger.info - Home page is open
+22:33:23 INFO  MyLogger.info - Afisha visible

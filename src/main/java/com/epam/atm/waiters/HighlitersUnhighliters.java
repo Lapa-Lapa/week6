@@ -28,10 +28,10 @@ public class HighlitersUnhighliters {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", driver.findElement(locator));
     }
 
-    public static void highlightUnhighlightClickElement(By locator, WebDriver driver) {
+    public static void highlightClickUnhighlightElement(By locator, WebDriver driver) {
         waitForElementVisible(locator, driver);
-        waitForElementClicable(locator, driver);
         highlightElement(locator, driver);
+        driver.findElement(locator).click();
         unHighlightElement(locator, driver);
         driver.findElement(locator).click();
     }

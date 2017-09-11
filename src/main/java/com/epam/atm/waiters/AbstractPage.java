@@ -44,7 +44,7 @@ public class AbstractPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", driver.findElement(locator));
     }
 
-//    protected void highlightUnhighlightClickElement(By locator) {
+//    protected void highlightClickUnhighlightElement(By locator) {
 //        waitForElementVisible(locator);
 //        waitForElementClicable(locator);
 //        highlightElement(locator);
